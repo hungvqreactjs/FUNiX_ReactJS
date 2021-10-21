@@ -1,5 +1,19 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Navbar,
+  Nav,
+  NavbarText,
+  NavbarBrand,
+  UncontrolledDropdown,
+
+} from "reactstrap";
 import dateFormat from "dateformat";
 
 class List extends Component {
@@ -47,12 +61,32 @@ class List extends Component {
       );
     });
     return (
-      <div className="container">
-        <div className="row">{nhanVien}</div>
-        <div className="row">
-          <div className="col-12 col-md-5 m-1">
-            {this.renderinfo(this.state.InfoStaffs)}
+      <div>
+        <Navbar color="light" light expand="md" className="bg-info clearfix" >
+          <NavbarBrand >reactstrap</NavbarBrand>
+          <NavbarText>Simple Text</NavbarText>
+       
+            <Nav className="mr-auto" navbar>
+
+              <UncontrolledDropdown  className="float-right">
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu >
+                  <DropdownItem>Option 1</DropdownItem>
+                  <DropdownItem>Option 2</DropdownItem>
+                  <DropdownItem>Option 3</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+        </Navbar>
+        <br/>
+        <div className="container">
+          <div className="row">
+            <div className="col-6 ">{nhanVien}</div>
           </div>
+
+          {this.renderinfo(this.state.InfoStaffs)}
         </div>
       </div>
     );
