@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
@@ -36,34 +32,34 @@ class List extends Component {
   renderinfo(staffs) {
     if (staffs != null)
       return (
-          <div className="card">
-            <div className="additional">
-              <div className="user-card">
-                <div className="points center">{staffs.department.name}</div>
-                <img src="./avatar.png" alt="" />
-              </div>
-              <div className="more-info">
-                <h2>{staffs.name}</h2>
-                <div className="coords">
-                  <span>Ngày vào công ty:</span>
-                  <span>{dateFormat(staffs.startDate, "dd/mm/yyyy")}</span>
-                </div>
-                <div className="coords">
-                  <span>Số ngày làm thêm:</span>
-                  <span>{staffs.overTime}</span>
-                </div>
-                <div className="coords">
-                  <span>Số ngày nghỉ còn lại:</span>
-                  <span>{staffs.annualLeave}</span>
-                </div>
-              </div>
+        <div className="card">
+          <div className="additional">
+            <div className="user-card">
+              <div className="points center">{staffs.department.name}</div>
+              <img src={staffs.image} alt="avatar" />
             </div>
-            <div className="general">
+            <div className="more-info">
               <h2>{staffs.name}</h2>
-              <p>Ngày sinh: {dateFormat(staffs.doB, "dd/mm/yyyy")}</p>
+              <div className="coords">
+                <span>Start Date:</span>
+                <span>{dateFormat(staffs.startDate, "dd/mm/yyyy")}</span>
+              </div>
+              <div className="coords">
+                <span>Over Time:</span>
+                <span>{staffs.overTime}</span>
+              </div>
+              <div className="coords">
+                <span>Annual Leave:</span>
+                <span>{staffs.annualLeave}</span>
+              </div>
             </div>
           </div>
-
+          <div className="general">
+            <div className="generalID">ID STAFF {staffs.id + 1} </div>
+            <h1>{staffs.name}</h1>
+            <p>DoB: {dateFormat(staffs.doB, "dd/mm/yyyy")}</p>
+          </div>
+        </div>
       );
   }
 
@@ -74,8 +70,9 @@ class List extends Component {
           key={staffs.id}
           className={`col-lg-${this.state.column} col-12 col-sm-6 staff`}
         >
-          <div className="inner" onClick={() => this.clickInfoStaffs(staffs)}>
-          {staffs.name}
+          <div className="inner pagination" onClick={() => this.clickInfoStaffs(staffs)}>
+            <span class="badge page-item ">{staffs.id + 1}</span>{" "}
+            {staffs.name}
           </div>
         </div>
       );
@@ -83,8 +80,8 @@ class List extends Component {
 
     return (
       <div>
-        <Navbar color="light">
-          <NavbarBrand>Ứng dụng quản lý nhân viên</NavbarBrand>
+        <Navbar color="light" >
+          <NavbarBrand >Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
 
           <Nav className="mr-auto " navbar>
             <UncontrolledDropdown className="drop">
@@ -95,6 +92,9 @@ class List extends Component {
                 <DropdownItem value="6" onClick={this.inputData}>
                   2
                 </DropdownItem>
+                <DropdownItem value="4" onClick={this.inputData}>
+                  3
+                </DropdownItem>
                 <DropdownItem value="3" onClick={this.inputData}>
                   4
                 </DropdownItem>
@@ -103,6 +103,7 @@ class List extends Component {
           </Nav>
         </Navbar>
         <br />
+        <h2 className="textlist">DANH SÁCH NHÂN SỰ</h2>
         <div className="container">
           <div className="row">{nhanVien}</div>
         </div>
