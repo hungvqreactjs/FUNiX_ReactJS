@@ -9,10 +9,8 @@ import {
   DropdownToggle,
   Navbar,
   Nav,
-  NavbarText,
   NavbarBrand,
   UncontrolledDropdown,
-
 } from "reactstrap";
 import dateFormat from "dateformat";
 
@@ -21,10 +19,19 @@ class List extends Component {
     super(props);
     this.state = {
       InfoStaffs: null,
+      column: 6
     };
+    this.inputData = this.inputData.bind(this);
   }
   clickInfoStaffs(staffs) {
     this.setState({ InfoStaffs: staffs });
+  }
+  
+  inputData(event)
+  {
+    this.setState({
+      column: event.target.value
+    });
   }
 
   renderinfo(staffs) {
@@ -50,44 +57,39 @@ class List extends Component {
   render() {
     const nhanVien = this.props.STAFFS.map((staffs) => {
       return (
-        <div key={staffs.id}>
-          <Card
-            className="col-sm-12 col-md-12"
-            onClick={() => this.clickInfoStaffs(staffs)}
-          >
-            <div>{staffs.name}</div>
-          </Card>
-        </div>
+        <Card
+          key={staffs.id}
+          className={`col-lg-${this.state.column} col-12 col-sm-6`}
+          onClick={() => this.clickInfoStaffs(staffs)}
+        >
+          {staffs.name}
+        </Card>
       );
     });
+
+    
     return (
       <div>
-        <Navbar color="light" light expand="md" className="bg-info clearfix" >
-          <NavbarBrand >reactstrap</NavbarBrand>
-          <NavbarText>Simple Text</NavbarText>
-       
-            <Nav className="mr-auto" navbar>
+        <Navbar color="light">
+          <NavbarBrand>Ứng dụng quản lý nhân viên</NavbarBrand>
 
-              <UncontrolledDropdown  className="float-right">
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu >
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem>Option 3</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
+          <Nav className="mr-auto " navbar>
+            <UncontrolledDropdown className="drop">
+              <DropdownToggle nav caret>
+                Số cột
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem value='6' onClick={this.inputData}>2</DropdownItem>
+                <DropdownItem value='3' onClick={this.inputData}>4</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
         </Navbar>
-        <br/>
+        <br />
         <div className="container">
-          <div className="row">
-            <div className="col-6 ">{nhanVien}</div>
-          </div>
-
-          {this.renderinfo(this.state.InfoStaffs)}
+          <div className="row">{nhanVien}</div>
         </div>
+        {this.renderinfo(this.state.InfoStaffs)}
       </div>
     );
   }
