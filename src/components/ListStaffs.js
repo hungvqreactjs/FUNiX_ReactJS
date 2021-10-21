@@ -19,55 +19,68 @@ class List extends Component {
     super(props);
     this.state = {
       InfoStaffs: null,
-      column: 6
+      column: 6,
     };
     this.inputData = this.inputData.bind(this);
   }
   clickInfoStaffs(staffs) {
     this.setState({ InfoStaffs: staffs });
   }
-  
-  inputData(event)
-  {
+
+  inputData(event) {
     this.setState({
-      column: event.target.value
+      column: event.target.value,
     });
   }
 
   renderinfo(staffs) {
     if (staffs != null)
       return (
-        <Card>
-          <CardBody>
-            <CardTitle tag="h5">{staffs.name}</CardTitle>
-            <CardText>
-              Ngày sinh: {dateFormat(staffs.doB, "dd/mm/yyyy")}
-            </CardText>
-            <CardText>
-              Ngày vào công ty: {dateFormat(staffs.startDate, "dd/mm/yyyy")}
-            </CardText>
-            <CardText>Phòng ban: {staffs.department.name}</CardText>
-            <CardText>Số ngày làm thêm: {staffs.overTime}</CardText>
-            <CardText>Số ngày nghỉ còn lại: {staffs.annualLeave}</CardText>
-          </CardBody>
-        </Card>
+          <div className="card">
+            <div className="additional">
+              <div className="user-card">
+                <div className="points center">{staffs.department.name}</div>
+                <img src="./avatar.png" alt="" />
+              </div>
+              <div className="more-info">
+                <h2>{staffs.name}</h2>
+                <div className="coords">
+                  <span>Ngày vào công ty:</span>
+                  <span>{dateFormat(staffs.startDate, "dd/mm/yyyy")}</span>
+                </div>
+                <div className="coords">
+                  <span>Số ngày làm thêm:</span>
+                  <span>{staffs.overTime}</span>
+                </div>
+                <div className="coords">
+                  <span>Số ngày nghỉ còn lại:</span>
+                  <span>{staffs.annualLeave}</span>
+                </div>
+              </div>
+            </div>
+            <div className="general">
+              <h2>{staffs.name}</h2>
+              <p>Ngày sinh: {dateFormat(staffs.doB, "dd/mm/yyyy")}</p>
+            </div>
+          </div>
+
       );
   }
 
   render() {
     const nhanVien = this.props.STAFFS.map((staffs) => {
       return (
-        <Card
+        <div
           key={staffs.id}
-          className={`col-lg-${this.state.column} col-12 col-sm-6`}
-          onClick={() => this.clickInfoStaffs(staffs)}
+          className={`col-lg-${this.state.column} col-12 col-sm-6 staff`}
         >
+          <div className="inner" onClick={() => this.clickInfoStaffs(staffs)}>
           {staffs.name}
-        </Card>
+          </div>
+        </div>
       );
     });
 
-    
     return (
       <div>
         <Navbar color="light">
@@ -79,8 +92,12 @@ class List extends Component {
                 Số cột
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem value='6' onClick={this.inputData}>2</DropdownItem>
-                <DropdownItem value='3' onClick={this.inputData}>4</DropdownItem>
+                <DropdownItem value="6" onClick={this.inputData}>
+                  2
+                </DropdownItem>
+                <DropdownItem value="3" onClick={this.inputData}>
+                  4
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
