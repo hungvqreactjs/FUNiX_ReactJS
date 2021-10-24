@@ -1,0 +1,7 @@
+.my-card {
+    display: flex;
+}
+
+.my-card-title {
+    margin-left: 20px;
+}

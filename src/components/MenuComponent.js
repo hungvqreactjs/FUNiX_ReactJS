@@ -7,7 +7,7 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
-import DishdetailComponent, { Dishdetail } from "./DishdetailComponent";
+import Dishdetail from "./DishdetailComponent";
 
 class Menu extends Component {
   constructor(props) {
@@ -23,23 +23,16 @@ class Menu extends Component {
   }
 
   renderDish(dish) {
-    if (dish != null)
-      return (
-        <Dishdetail
-          name={dish.name}
-          image={dish.image}
-          description={dish.description}
-        />
-      );
+    if (dish != null) return <Dishdetail dish={dish} />;
   }
 
   render() {
     const menu = this.props.dishes.map((dish) => {
       return (
         <div className="col-12 col-md-5 m-1">
-          <Card key={dish.id} onClick={() => this.onDishSelect(dish)}>
-            <CardImg width="100%" src={dish.image} alt={dish.name} />
-            <CardImgOverlay>
+          <Card className="row" key={dish.id} onClick={() => this.onDishSelect(dish)}>
+            <CardImg className="col-4" src={dish.image} alt={dish.name}/>
+            <CardImgOverlay className="col-8">
               <CardTitle>{dish.name}</CardTitle>
             </CardImgOverlay>
           </Card>
