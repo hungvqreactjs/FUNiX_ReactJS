@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./Home";
-import Staffs from "./Staffs";
+import Staffs from "./Staff";
 import { STAFFS, DEPARTMENTS } from "../shared/staffs";
 import Departments from "./Departments";
 import Payroll from "./Payroll";

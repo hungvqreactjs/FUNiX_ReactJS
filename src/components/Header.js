@@ -30,7 +30,7 @@ const Header = (props) => {
               <NavLink to="/phong-ban">Phòng Ban</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/bang-luong">Bảng Lương</NavLink>
+              <NavLink to="/bang-luong"> Bảng Lương</NavLink>
             </NavItem>     
           </Nav>
         </Collapse>
