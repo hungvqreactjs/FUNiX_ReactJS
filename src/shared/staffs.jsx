@@ -33,7 +33,7 @@ export const ROLE = {
 export const STAFFS =
     [
         {
-            id: 1,
+            id: 0,
             name: "David de Gea",
             doB: "1990-01-01T08:59:00.000Z",
             salaryScale: 1.1,
@@ -44,7 +44,7 @@ export const STAFFS =
             image: '/assets/images/ddg1.jpg',
         },
         {
-            id: 5,
+            id: 1,
             name: "Harry Maguire",
             doB: "1993-01-01T08:59:00.000Z",
             salaryScale: 1.2,
@@ -55,7 +55,7 @@ export const STAFFS =
             image: '/assets/images/hm5.jpg',
         },
         {
-            id: 6,
+            id: 2,
             name: "Paul Pogba",
             doB: "1993-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -66,7 +66,7 @@ export const STAFFS =
             image: '/assets/images/p6.jpg',
         },
         {
-            id: 7,
+            id: 3,
             name: "Cristiano Ronaldo",
             doB: "1985-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -77,7 +77,7 @@ export const STAFFS =
             image: '/assets/images/cr7.jpg',
         },
         {
-            id: 10,
+            id: 4,
             name: " Marcus Rashford",
             doB: "1997-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -88,7 +88,7 @@ export const STAFFS =
             image: '/assets/images/mr10.jpg',
         },
         {
-            id: 11,
+            id: 5,
             name: "Mason Greenwood",
             doB: "2001-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -99,7 +99,7 @@ export const STAFFS =
             image: '/assets/images/mg11.jpg',
         },
         {
-            id: 14,
+            id: 6,
             name: "Jesse Lingard",
             doB: "1992-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -110,7 +110,7 @@ export const STAFFS =
             image: '/assets/images/jl14.jpg',
         },
         {
-            id: 17,
+            id: 7,
             name: "Fred",
             doB: "1993-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -121,7 +121,7 @@ export const STAFFS =
             image: '/assets/images/f17.jpg',
         },
         {
-            id: 18,
+            id: 8,
             name: "Bruno Fernandes",
             doB: "1994-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -132,7 +132,7 @@ export const STAFFS =
             image: '/assets/images/bf18.jpg',
         },
         {
-            id: 20,
+            id: 9,
             name: "Diogo Dalot",
             doB: "1999-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -143,7 +143,7 @@ export const STAFFS =
             image: '/assets/images/dd20.jpg',
         },
         {
-            id: 21,
+            id: 10,
             name: "Edinson Cavani",
             doB: "1987-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -154,7 +154,7 @@ export const STAFFS =
             image: '/assets/images/c21.jpg',
         },
         {
-            id: 23,
+            id: 11,
             name: "Luke Shaw",
             doB: "1995-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -165,7 +165,7 @@ export const STAFFS =
             image: '/assets/images/ls23.jpg',
         },
         {
-            id: 25,
+            id: 12,
             name: "Jadon Sancho",
             doB: "2000-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -176,7 +176,7 @@ export const STAFFS =
             image: '/assets/images/js25.jpg',
         },
         {
-            id: 29,
+            id: 13,
             name: "Aaron Wan-Bissaka",
             doB: "1997-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -187,7 +187,7 @@ export const STAFFS =
             image: '/assets/images/awb29.jpg',
         },
         {
-            id: 31,
+            id: 14,
             name: "Nemanja Matić",
             doB: "1988-01-01T08:59:00.000Z",
             salaryScale: 1,
@@ -198,7 +198,7 @@ export const STAFFS =
             image: '/assets/images/nm31.jpg',
         },
         {
-            id: 39,
+            id: 15,
             name: "Scott McTominay",
             doB: "1996-01-01T08:59:00.000Z",
             salaryScale: 1,

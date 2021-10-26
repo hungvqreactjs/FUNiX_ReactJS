@@ -9,7 +9,6 @@ import {
 
 const InfoStaff = ({ staff, onClick }) => {
   return (
-    <div>
       <Card  onClick={() => onClick(staff.id)}>
         <CardBody>
           <CardTitle tag="h5">{staff.name}</CardTitle>
@@ -23,8 +22,7 @@ const InfoStaff = ({ staff, onClick }) => {
           <CardText>Số ngày làm thêm: {staff.overTime}</CardText>
           <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
         </CardBody>
-      </Card>
-    </div>
+      </Card> 
   );
 };
 
