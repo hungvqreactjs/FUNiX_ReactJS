@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, CardTitle, CardText } from "reactstrap";
+import {
+  Card,
+  CardTitle,
+  CardText,
+  Breadcrumb,
+  BreadcrumbItem,
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Departments =({props}) => {
   const departments =  props.map((department) => {
@@ -13,9 +20,18 @@ const Departments =({props}) => {
     );
   });
   return(
-      <div>
-        {departments}
-      </div>
+         <div className="container">
+         <div className="row">
+           <Breadcrumb>
+             <BreadcrumbItem>
+               <Link to="/home">Home</Link>
+             </BreadcrumbItem>
+             <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
+           </Breadcrumb>
+           <hr />
+         </div>
+         <div className="row">{departments}</div>
+       </div>
   )
 }
 
