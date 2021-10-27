@@ -17,22 +17,25 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div  className="navbar">
+      <NavbarBrand className="navbarlogo"><Link to='/home'><img src="assets/images/logo.png" style={{width:"40px"}}/></Link></NavbarBrand>
       <Navbar color="light" light expand="md" >
-        <NavbarBrand ><Link to='/home'><img src="../assets/imgges/logo.jpg"/></Link></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto navbar" navbar>
-            <NavItem>
-              <NavLink to="/nhan-vien">Nhân Viên</NavLink>
+          <Nav className="mr-auto" navbar>
+          <NavItem>
+              <NavLink to="/trang-chu" className="textnav">Trang chủ</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/phong-ban">Phòng Ban</NavLink>
+              <NavLink to="/nhan-vien" className="textnav">Nhân Viên</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/bang-luong"> Bảng Lương</NavLink>
+              <NavLink to="/phong-ban" className="textnav">Phòng Ban</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/bang-luong" className="textnav"> Bảng Lương</NavLink>
             </NavItem>     
-          </Nav>
+          </Nav>    
         </Collapse>
       </Navbar>
     </div>

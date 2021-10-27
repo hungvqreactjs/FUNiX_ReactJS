@@ -1,36 +1,25 @@
-import React from 'react';
+import React from "react";
 import {
-
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-
-} from 'reactstrap';
+} from "reactstrap";
 
 const Column = () => {
- 
   return (
-    <div>  
-      <UncontrolledDropdown>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>  
-        </UncontrolledDropdown>
-    </div>
+    <UncontrolledDropdown className="nav-cloumn">
+      <DropdownToggle nav caret>
+        Options
+      </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>Mặc định</DropdownItem>
+        <DropdownItem divider />
+        <DropdownItem>4</DropdownItem>
+        <DropdownItem>3</DropdownItem>
+      </DropdownMenu>
+    </UncontrolledDropdown>
   );
-}
+};
 
 export default Column;

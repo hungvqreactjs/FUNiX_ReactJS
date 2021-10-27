@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Departments =({props}) => {
   const departments =  props.map((department) => {
     return (
-      <div className="col-12 col-md-5 m-1" key={department.id}>
+      <div className="col-lg-4 col-sm-6 col-12" key={department.id}>
         <Card onClick={department.id}>
           <CardTitle>{department.name}</CardTitle>
           <CardText>Số nhân viên: {department.numberOfStaff}</CardText>

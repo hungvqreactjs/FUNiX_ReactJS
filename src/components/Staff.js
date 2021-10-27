@@ -22,25 +22,31 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
-  
   const listStaffs = props.map((staff) => {
     return (
-      <div className="col-12 col-md-5 m-1" key={staff.id}>
-        <Staff staff={staff}/>
+      <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
+        <Staff staff={staff} />
       </div>
     );
   });
 
   return (
     <div className="container">
-      <div className="row">
-        <Breadcrumb>
-          <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+      <div className="row nav-menu">
+        <div className="col-4">
+        <Breadcrumb className="nav-router">
+          <BreadcrumbItem>
+            <Link to="/home">Home</Link>
+          </BreadcrumbItem>
           <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
-          <Search/>
-          <Column/>
         </Breadcrumb>
-            <hr/> 
+        </div>
+        <div className="nav-function col-6">
+          <Search />
+          <Column />
+        </div>
+
+        <hr />
       </div>
       <div className="row">{listStaffs}</div>
     </div>

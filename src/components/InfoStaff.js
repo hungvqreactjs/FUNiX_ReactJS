@@ -5,19 +5,19 @@ import {
   CardBody,
   CardTitle,
   CardText,
+  CardImg,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 import { STAFFS } from "../shared/staffs";
 
-
 const InfoStaff = () => {
   let match = useRouteMatch();
 
-  var staff = STAFFS.filter(staff => {
+  var staff = STAFFS.filter((staff) => {
     return staff.id == match.params.id;
-  })
+  });
   staff = staff[0];
 
   return (
@@ -34,10 +34,18 @@ const InfoStaff = () => {
         </Breadcrumb>
         <hr />
       </div>
-      <div className="row">
-        <Card>
-          <CardBody>
-            <CardTitle tag="h5">{staff.name}</CardTitle>
+      <Card className="card-info">
+        <div className="row">
+          <div className="col-lg-3 col-sm-4 col-12">
+            <CardImg
+              className=" img-info"
+              width="100%"
+              src={staff.image}
+              alt={staff.name}
+            />
+          </div>
+          <CardBody className="col-lg-9 col-sm-8 col-12">
+            <CardTitle className="card-title-info">{staff.name}</CardTitle>
             <CardText>Phòng ban: {staff.department.name}</CardText>
             <CardText>
               Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}
@@ -48,8 +56,8 @@ const InfoStaff = () => {
             <CardText>Số ngày làm thêm: {staff.overTime}</CardText>
             <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
           </CardBody>
-        </Card>
-      </div>
+        </div>
+      </Card>
     </div>
   );
 };
