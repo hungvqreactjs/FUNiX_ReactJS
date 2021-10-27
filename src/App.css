@@ -1,3 +1,109 @@
-.navbar-dark{
-background-color: brown !important;
+.navbar {
+  background-color: brown !important;
+  padding: 0 30px;
+  line-height: 45px;
+  justify-content: space-between;
+}
+.textnav {
+  color: #fff;
+  margin: 0 6px;
+  font-weight: bold;
+  text-decoration-line: none;
+}
+
+.nav-router {
+  margin-top: 20px;
+}
+
+.nav-function {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-menu {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-img {
+  padding: 3px;
+}
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none !important;
+  color: #fff;
+}
+.card-title-info {
+  font-size: 23px;
+}
+
+.card-text{
+  line-height: 26px;
+  padding-left: 50px;
+}
+.img-info{
+  padding: 6px;
+}
+.card{
+  background-image: url(./logo1.png);
+  color:#fff;
+  margin-bottom: 10px;
+
+opacity: 0.85;
+}
+
+.card-payroll{
+  padding: 10px 
+}
+
+
+.home{
+  background-image: url("./anhnen.png");
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+@media (max-width: 1300px) {
+  .card-text{
+    line-height: 17px;
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-cloumn {
+    display: none;
+  }
+  .card-text{
+    line-height: 15px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 767px) {
+
+  .home{
+    background-image: url("./anhnen2.png");
+    
+  }
+  
+  .navbarlogo {
+    display: none;
+  }
+
+  .navbar {
+    line-height: 40px;
+    justify-content: right;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    align-items: center;
+  }
+  .nav-item {
+    text-align: center;
+  }
 }
