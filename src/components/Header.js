@@ -18,11 +18,11 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md" >
         <NavbarBrand ><Link to='/home'><img src="../assets/imgges/logo.jpg"/></Link></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mr-auto navbar" navbar>
             <NavItem>
               <NavLink to="/nhan-vien">Nhân Viên</NavLink>
             </NavItem>
