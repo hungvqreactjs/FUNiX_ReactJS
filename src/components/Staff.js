@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardImg,
@@ -6,8 +6,9 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import InfoStaff from "./InfoStaff";
 import { Link } from "react-router-dom";
+import Column from "./Column";
+import Search from "./Search";
 
 const Staff = ({ staff, onClick }) => {
   return (
@@ -21,12 +22,11 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
-  const [staff, setStaff] = useState(null);
-
+  
   const listStaffs = props.map((staff) => {
     return (
       <div className="col-12 col-md-5 m-1" key={staff.id}>
-        <Staff staff={staff} onClick={() => setStaff(staff)} />
+        <Staff staff={staff}/>
       </div>
     );
   });
@@ -37,15 +37,12 @@ const Staffs = ({ props }) => {
         <Breadcrumb>
           <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
           <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
+          <Search/>
+          <Column/>
         </Breadcrumb>
             <hr/> 
       </div>
       <div className="row">{listStaffs}</div>
-      {staff && (
-        <div className="row">
-          <InfoStaff staff={staff} />
-        </div>
-      )}
     </div>
   );
 };

@@ -27,7 +27,7 @@ function Main() {
       <Switch>
         <Route path="/trang-chu" component={HomePage} />
         <Route exact path="/nhan-vien" component={() => <Staffs props={STAFFS} />} />
-        {/*<Route path="/nhan-vien/:Id" component={StaffById} />*/}
+        <Route path="/nhan-vien/:id" component={InfoStaff} /> 
         <Route exact path="/phong-ban" component={() => <Departments props={DEPARTMENTS} />} />
         <Route exact path="/bang-luong" component={() => <Payroll props={STAFFS} />} />
         <Redirect to="/trang-chu"/>

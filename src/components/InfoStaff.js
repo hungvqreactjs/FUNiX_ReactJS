@@ -8,9 +8,18 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
+import { STAFFS } from "../shared/staffs";
 
-const InfoStaff = ({ staff, onClick }) => {
+
+const InfoStaff = () => {
+  let match = useRouteMatch();
+
+  var staff = STAFFS.filter(staff => {
+    return staff.id == match.params.id;
+  })
+  staff = staff[0];
+
   return (
     <div className="container">
       <div className="row">
@@ -26,7 +35,7 @@ const InfoStaff = ({ staff, onClick }) => {
         <hr />
       </div>
       <div className="row">
-        <Card onClick={() => onClick(staff.id)}>
+        <Card>
           <CardBody>
             <CardTitle tag="h5">{staff.name}</CardTitle>
             <CardText>Phòng ban: {staff.department.name}</CardText>
