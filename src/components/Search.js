@@ -1,16 +1,28 @@
 import React from "react";
-import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon,
+} from "reactstrap";
 
-const Search = () => {
+
+const Search = ({onChange }) => {
+ 
   return (
-
-      <InputGroup>
-        <Input placeholder="tên, mã nhân viên ..." />
+    
+      <InputGroup size="sm">
+        <Input
+          placeholder="Tìm kiếm theo tên nhân viên..."
+          onChange={onChange}
+        />
         <InputGroupAddon addonType="append">
-        <Button color="secondary"><span className="fa fa-search"></span></Button>
+          <InputGroupText color="secondary">
+            <span className="fa fa-search fa-lg"></span>
+          </InputGroupText>
         </InputGroupAddon>
       </InputGroup>
-   
+    
   );
 };
 

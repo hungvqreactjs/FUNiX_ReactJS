@@ -14,13 +14,6 @@ function Main() {
       <Home/>
     )
   }
-
-/*const StaffById = ({match}) => {
-  return(
-    <InfoStaff staff ={STAFFS.filter((staff) => staff.id)} />
-  )
-}*/
-
   return (
     <div>
       <Header />

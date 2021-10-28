@@ -6,17 +6,23 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const Column = () => {
+const Column = ({ onClick,name, value1, label1, value2, label2, value3, label3 }) => {
   return (
     <UncontrolledDropdown className="nav-cloumn">
       <DropdownToggle nav caret>
-        Options
+        {name}
       </DropdownToggle>
       <DropdownMenu right>
-        <DropdownItem>Mặc định</DropdownItem>
+        <DropdownItem value={value1} onClick={onClick}>
+          {label1}
+        </DropdownItem>
         <DropdownItem divider />
-        <DropdownItem>4</DropdownItem>
-        <DropdownItem>3</DropdownItem>
+        <DropdownItem value={value2} onClick={onClick}>
+          {label2}
+        </DropdownItem>
+        <DropdownItem value={value3} onClick={onClick}>
+          {label3}
+        </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>
   );

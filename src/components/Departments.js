@@ -22,9 +22,9 @@ const Departments =({props}) => {
   return(
          <div className="container">
          <div className="row">
-           <Breadcrumb>
+           <Breadcrumb className="nav-router">
              <BreadcrumbItem>
-               <Link to="/home">Home</Link>
+               <Link to="/home">Trang chủ</Link>
              </BreadcrumbItem>
              <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
            </Breadcrumb>

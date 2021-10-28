@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImg,
@@ -22,33 +22,62 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
-  const listStaffs = props.map((staff) => {
-    return (
-      <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
-        <Staff staff={staff} />
-      </div>
-    );
-  });
+  const [column, setColumn] = useState(2);
+  const [searchKey, setSearchKey] = useState("");
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchKey(value);
+  };
+
+  const listStaffs = props
+    .filter((staff) => {
+      if (searchKey == "") {
+        return staff;
+      } else if (staff.name.toLowerCase().includes(searchKey.toLowerCase())) {
+        return staff;
+      }
+    })
+    .map((staff) => {
+      return (
+        <div className={`col-6 col-sm-4 col-lg-${column}`} key={staff.id}>
+          <Staff staff={staff} />
+        </div>
+      );
+    });
+
+  const fnDropDown = (e) => {
+    setColumn(e.target.value);
+  };
 
   return (
     <div className="container">
       <div className="row nav-menu">
         <div className="col-4">
-        <Breadcrumb className="nav-router">
-          <BreadcrumbItem>
-            <Link to="/home">Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
-        </Breadcrumb>
+          <Breadcrumb className="nav-router">
+            <BreadcrumbItem>
+              <Link to="/home">Trang chủ</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
+          </Breadcrumb>
         </div>
         <div className="nav-function col-6">
-          <Search />
-          <Column />
+          <Search onChange={(e) => handleSearch(e)} />
+          <Column
+            onClick={fnDropDown}
+            name="Số cột"
+            value1="2"
+            label1="Mặc Định"
+            value2="3"
+            label2="4"
+            value3="4"
+            label3="3"
+          />
         </div>
 
         <hr />
       </div>
-      <div className="row">{listStaffs}</div>
+      <div className="row">{listStaffs}</div> 
     </div>
   );
 };

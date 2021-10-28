@@ -6,12 +6,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavbarText,
 } from "reactstrap";
 import { NavLink} from "react-router-dom"
 import { Link } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -24,16 +23,16 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
           <NavItem>
-              <NavLink to="/trang-chu" className="textnav">Trang chủ</NavLink>
+              <NavLink to="/trang-chu" className="textnav"><i class="fa fa-home fa-lg"></i> Trang chủ</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/nhan-vien" className="textnav">Nhân Viên</NavLink>
+              <NavLink to="/nhan-vien" className="textnav"><i class="fa fa-user fa-lg"></i> Nhân Viên</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/phong-ban" className="textnav">Phòng Ban</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/bang-luong" className="textnav"> Bảng Lương</NavLink>
+              <NavLink to="/bang-luong" className="textnav"><i class="fa fa-file-invoice-dollar fa-lg"></i> Bảng Lương</NavLink>
             </NavItem>     
           </Nav>    
         </Collapse>

@@ -23,12 +23,12 @@ const InfoStaff = () => {
   return (
     <div className="container">
       <div className="row">
-        <Breadcrumb>
+        <Breadcrumb className="nav-router">
           <BreadcrumbItem>
-            <Link to="/home">Home</Link>
+            <Link to="/home">Trang chủ</Link>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <Link to="/home">Nhân Viên</Link>
+            <Link to="/nhan-vien">Nhân Viên</Link>
           </BreadcrumbItem>
           <BreadcrumbItem active>{staff.name}</BreadcrumbItem>
         </Breadcrumb>
