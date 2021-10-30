@@ -7,25 +7,20 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import Column from "./Column";
+import Dropdown from "./Dropdown";
 import Search from "./Search";
 
 const Payroll = ({ props }) => {
   // Tính lương
-  const countSalary = props.map((obj) => ({
+  const listSalary = props.map((obj) => ({
     ...obj,
     salary: 2000 * obj.salaryScale + obj.overTime * 100,
   }));
-  // Lương từ thấp đên cao
-  const lowToHigh = countSalary.sort((a, b) =>
-    a.salary > b.salary ? 1 : b.salary > a.salary ? -1 : 0
-  );
-  // Lương từ cao đến thấp
-  const highToLow = countSalary.sort((a, b) =>
-    a.salary < b.salary ? 1 : b.salary < a.salary ? -1 : 0
-  );
+
+  console.log(listSalary);
+
   const [searchKey, setSearchKey] = useState("");
-  const [salaryColumn, setsalaryColumn] = useState(countSalary);
+  const [salaryColumn, setSalaryColumn] = useState(listSalary);
 
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -33,10 +28,37 @@ const Payroll = ({ props }) => {
   };
 
   const salaryDropDown = (e) => {
-    setsalaryColumn(e.target.value);
+    if (e.target.value === "1") {
+      setSalaryColumn(
+        listSalary.sort((a, b) => {
+          return parseInt(a.id) - parseInt(b.id);
+        })
+      );
+    } else if (e.target.value === "2") {
+     
+      setSalaryColumn(
+        listSalary.sort((a, b) => {
+          return parseInt(b.id) - parseInt(a.id);
+        })
+      );
+    } else if (e.target.value === "3") {
+      // Lương từ thấp đên cao
+      setSalaryColumn(
+        listSalary.sort((a, b) => {
+          return  parseInt(a.salary) - parseInt(b.salary);
+        })
+      );
+    } else if (e.target.value === "4") {
+      // Lương từ cao đến thấp
+      setSalaryColumn(
+        listSalary.sort((a, b) => {
+          return parseInt(b.salary) - parseInt(a.salary);
+        })
+      );
+    }
   };
 
-  const payroll = salaryColumn
+  const payRoll = salaryColumn
     .filter((payroll) => {
       if (searchKey == "") {
         return payroll;
@@ -57,7 +79,6 @@ const Payroll = ({ props }) => {
         </div>
       );
     });
-  console.log(payroll);
   return (
     <div className="container">
       <div className="row nav-menu">
@@ -71,21 +92,22 @@ const Payroll = ({ props }) => {
         </div>
         <div className="nav-function col-6">
           <Search onChange={(e) => handleSearch(e)} />
-          <Column
+          <Dropdown
             onClick={salaryDropDown}
-            name="Sắp xêp theo lương"
-            label1="Mặc Định theo STT"
-            value1={props}
-            label2="Thâp đến cao"
-            value2={lowToHigh}
-            label3="Cao đến thấp"
-            value3={highToLow}
+            name="Sắp xêp "
+            label1="Mã NV tăng dần"
+            value1={1}
+            label2="Mã NV giảm dần"
+            value2={2}
+            label3="Lương NV từ Thấp đến Cao"
+            value3={3}
+            label4="Lương NV từ Cao đến thấp"
+            value4={4}
           />
         </div>
-
         <hr />
       </div>
-      <div className="row">{payroll}</div>
+      <div className="row">{payRoll}</div>
     </div>
   );
 };

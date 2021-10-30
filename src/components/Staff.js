@@ -7,7 +7,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import Column from "./Column";
+import Dropdown from "./Dropdown";
 import Search from "./Search";
 
 const Staff = ({ staff, onClick }) => {
@@ -24,7 +24,7 @@ const Staff = ({ staff, onClick }) => {
 const Staffs = ({ props }) => {
   const [column, setColumn] = useState(2);
   const [searchKey, setSearchKey] = useState("");
-
+  
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearchKey(value);
@@ -48,6 +48,7 @@ const Staffs = ({ props }) => {
 
   const fnDropDown = (e) => {
     setColumn(e.target.value);
+    
   };
 
   return (
@@ -63,15 +64,15 @@ const Staffs = ({ props }) => {
         </div>
         <div className="nav-function col-6">
           <Search onChange={(e) => handleSearch(e)} />
-          <Column
+          <Dropdown
             onClick={fnDropDown}
             name="Số cột"
             value1="2"
             label1="Mặc Định"
-            value2="3"
-            label2="4"
-            value3="4"
-            label3="3"
+            value3="3"
+            label3="4 cột"
+            value4="4"
+            label4="3 cột"
           />
         </div>
 
