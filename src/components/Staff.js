@@ -64,7 +64,7 @@ const Staffs = ({ props }) => {
         </div>
         <div className="nav-function col-6">
           <Search onChange={(e) => handleSearch(e)} />
-          <Dropdown
+          <Dropdown className="nav-cloumn" 
             onClick={fnDropDown}
             name="Số cột"
             value1="2"

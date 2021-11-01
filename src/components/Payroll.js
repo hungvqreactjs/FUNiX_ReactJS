@@ -17,12 +17,12 @@ const Payroll = ({ props }) => {
     salary: 2000 * obj.salaryScale + obj.overTime * 100,
   }));
 
-  console.log(listSalary);
-
   const [searchKey, setSearchKey] = useState("");
   const [salaryColumn, setSalaryColumn] = useState(listSalary);
+  const [stateSalary, setStateSalary] = useState([]);
 
   const handleSearch = (e) => {
+    console.log(e);
     const value = e.target.value;
     setSearchKey(value);
   };
@@ -34,20 +34,25 @@ const Payroll = ({ props }) => {
           return parseInt(a.id) - parseInt(b.id);
         })
       );
+      reRenderList();
+      console.log(" 1", salaryColumn);
     } else if (e.target.value === "2") {
-     
       setSalaryColumn(
         listSalary.sort((a, b) => {
           return parseInt(b.id) - parseInt(a.id);
         })
       );
+      reRenderList();
+      console.log("2", salaryColumn);
     } else if (e.target.value === "3") {
       // Lương từ thấp đên cao
       setSalaryColumn(
         listSalary.sort((a, b) => {
-          return  parseInt(a.salary) - parseInt(b.salary);
+          return parseInt(a.salary) - parseInt(b.salary);
         })
       );
+      console.log("3", salaryColumn);
+      reRenderList();
     } else if (e.target.value === "4") {
       // Lương từ cao đến thấp
       setSalaryColumn(
@@ -55,30 +60,39 @@ const Payroll = ({ props }) => {
           return parseInt(b.salary) - parseInt(a.salary);
         })
       );
+      reRenderList();
+      console.log("4", salaryColumn);
     }
   };
 
-  const payRoll = salaryColumn
-    .filter((payroll) => {
-      if (searchKey == "") {
-        return payroll;
-      } else if (payroll.name.toLowerCase().includes(searchKey.toLowerCase())) {
-        return payroll;
-      }
-    })
-    .map((payroll) => {
-      return (
-        <div className="col-lg-4 col-sm-6 col-12 " key={payroll.id}>
-          <Card className="card-payroll">
-            <CardTitle>{payroll.name}</CardTitle>
-            <CardText>Mã Nhân Viên: {payroll.id}</CardText>
-            <CardText>Hệ Sô lương: {payroll.salaryScale}</CardText>
-            <CardText>Số ngày làm thêm {payroll.overTime}</CardText>
-            <CardTitle>Lương: {payroll.salary}</CardTitle>
-          </Card>
-        </div>
-      );
-    });
+  function reRenderList() {
+    console.log("render", salaryColumn);
+    const payRoll = salaryColumn
+      .filter((payroll) => {
+        if (searchKey == "") {
+          return payroll;
+        } else if (
+          payroll.name.toLowerCase().includes(searchKey.toLowerCase())
+        ) {
+          return payroll;
+        }
+      })
+      .map((payroll) => {
+        return (
+          <div className="col-lg-4 col-sm-6 col-12 " key={payroll.id}>
+            <Card className="card-payroll">
+              <CardTitle>{payroll.name}</CardTitle>
+              <CardText>Mã Nhân Viên: {payroll.id}</CardText>
+              <CardText>Hệ Sô lương: {payroll.salaryScale}</CardText>
+              <CardText>Số ngày làm thêm {payroll.overTime}</CardText>
+              <CardTitle>Lương: {payroll.salary}</CardTitle>
+            </Card>
+          </div>
+        );
+      });
+
+    setStateSalary(payRoll);
+  }
   return (
     <div className="container">
       <div className="row nav-menu">
@@ -93,6 +107,7 @@ const Payroll = ({ props }) => {
         <div className="nav-function col-6">
           <Search onChange={(e) => handleSearch(e)} />
           <Dropdown
+            className="nav-cloumn1"
             onClick={salaryDropDown}
             name="Sắp xêp "
             label1="Mã NV tăng dần"
@@ -107,7 +122,7 @@ const Payroll = ({ props }) => {
         </div>
         <hr />
       </div>
-      <div className="row">{payRoll}</div>
+      <div className="row">{stateSalary}</div>
     </div>
   );
 };

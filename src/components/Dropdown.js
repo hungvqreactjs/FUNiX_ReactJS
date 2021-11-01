@@ -8,7 +8,7 @@ import {
 
 const Dropdown = ({ onClick,name, value1, label1, value2, label2, value3, label3, value4, label4 }) => {
   return (
-    <UncontrolledDropdown className="nav-cloumn">
+    <UncontrolledDropdown >
       <DropdownToggle nav caret>
         {name}
       </DropdownToggle>
