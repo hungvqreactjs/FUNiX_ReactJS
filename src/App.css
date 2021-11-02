@@ -89,7 +89,7 @@ font-size: 18px;
 }
 
 @media (max-width: 991px) {
-  .nav-cloumn {
+  .dropdown1 {
     display: none;
   }
  

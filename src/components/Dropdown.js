@@ -6,9 +6,9 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const Dropdown = ({ onClick,name, value1, label1, value2, label2, value3, label3, value4, label4 }) => {
+const Dropdown = ({ onClick,name, value1, label1, value2, label2, value3, label3, value4, label4, className }) => {
   return (
-    <UncontrolledDropdown >
+    <UncontrolledDropdown className={className}>
       <DropdownToggle nav caret>
         {name}
       </DropdownToggle>

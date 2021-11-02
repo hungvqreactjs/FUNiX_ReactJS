@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardTitle,
@@ -29,20 +29,22 @@ const Payroll = ({ props }) => {
 
   const salaryDropDown = (e) => {
     if (e.target.value === "1") {
+      // mã NV tăng dần
       setSalaryColumn(
         listSalary.sort((a, b) => {
           return parseInt(a.id) - parseInt(b.id);
         })
       );
-      reRenderList();
+    
       console.log(" 1", salaryColumn);
     } else if (e.target.value === "2") {
+      // mã NV giảm dần
       setSalaryColumn(
         listSalary.sort((a, b) => {
           return parseInt(b.id) - parseInt(a.id);
         })
       );
-      reRenderList();
+     
       console.log("2", salaryColumn);
     } else if (e.target.value === "3") {
       // Lương từ thấp đên cao
@@ -52,7 +54,7 @@ const Payroll = ({ props }) => {
         })
       );
       console.log("3", salaryColumn);
-      reRenderList();
+      
     } else if (e.target.value === "4") {
       // Lương từ cao đến thấp
       setSalaryColumn(
@@ -60,10 +62,15 @@ const Payroll = ({ props }) => {
           return parseInt(b.salary) - parseInt(a.salary);
         })
       );
-      reRenderList();
+     
       console.log("4", salaryColumn);
     }
+    
   };
+
+  useEffect(() => {
+    reRenderList();
+  })
 
   function reRenderList() {
     console.log("render", salaryColumn);
@@ -107,7 +114,7 @@ const Payroll = ({ props }) => {
         <div className="nav-function col-6">
           <Search onChange={(e) => handleSearch(e)} />
           <Dropdown
-            className="nav-cloumn1"
+         
             onClick={salaryDropDown}
             name="Sắp xêp "
             label1="Mã NV tăng dần"

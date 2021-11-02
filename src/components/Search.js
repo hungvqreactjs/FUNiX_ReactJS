@@ -13,12 +13,12 @@ const Search = ({onChange }) => {
     
       <InputGroup size="sm">
         <Input
-          placeholder="Tìm kiếm theo tên nhân viên..."
+          placeholder="search ..."
           onChange={onChange}
         />
-        <InputGroupAddon addonType="append">
+        <InputGroupAddon addonType="append" className="dropdown1">
           <InputGroupText color="secondary">
-            <span className="fa fa-search fa-lg"></span>
+            <span className="fa fa-search fa-lg "></span>
           </InputGroupText>
         </InputGroupAddon>
       </InputGroup>
