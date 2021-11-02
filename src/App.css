@@ -1,8 +1,8 @@
 .navbar {
     background-color: brown !important;
-    padding: 0 30px;
+    padding: 3px 40px !important;
     line-height: 45px;
-    justify-content: space-between;
+    justify-content: space-between !important;
   }
   .textnav {
     color: #fff;
@@ -12,7 +12,7 @@
   }
   
   .nav-router {
-    margin-top: 20px;
+    margin-top: 20px !important;
   }
   
   .nav-function {
@@ -79,7 +79,8 @@
   font-weight: bold;
   font-size: 18px;
   }
-  
+
+
   @media (max-width: 1300px) {
     .card-text{
       line-height: 17px;
@@ -113,10 +114,11 @@
       line-height: 40px;
       justify-content: right;
       margin: 5px 5px;
-      padding: 5px 5px;
+      padding: 0 20px !important;
       align-items: center;
     }
     .nav-item {
+
       text-align: center;
     }
   
@@ -128,4 +130,6 @@
       height:  35px;
     }
   }
+
+  
   
