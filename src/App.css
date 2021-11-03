@@ -80,6 +80,10 @@
   font-size: 18px;
   }
 
+  .modal-add{
+    justify-content: center ;
+  }
+
 
   @media (max-width: 1300px) {
     .card-text{
