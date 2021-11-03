@@ -7,8 +7,8 @@ const InputSearch = ({ onSubmit, refName }) => {
    
     <Form onSubmit={onSubmit}>
       <InputGroup size="sm">
-        <Input type="text" id="search" placeholder="Tìm kiếm..." innerRef={refName} />
-        <Button type="submit" className="dropdown1" >
+        <Input type="text" placeholder="Tìm kiếm..." innerRef={refName} />
+        <Button className="dropdown1" >
         <span className="fa fa-search fa-lg"></span>
         </Button>
       </InputGroup>

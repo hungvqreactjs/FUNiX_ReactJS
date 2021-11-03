@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { STAFFS } from "../data/staffs";
 import Staff from "../components/Staff";
 import InputSearch from "../components/InputSearch";
+import AddStaff from "../components/AddStaff"
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -26,7 +27,8 @@ const Staffs = () => {
             <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
           </Breadcrumb>
         </div>
-        <div className="nav-function col-6">
+        <div className="nav-function col-4">
+        <AddStaff/>
           <InputSearch onSubmit={submitHandler} refName={inputRef} />
         </div>
         <hr />
