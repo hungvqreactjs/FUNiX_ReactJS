@@ -15,6 +15,35 @@ import {
 const AddStaff = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [form, setForm] = useState({
+    id: 15,
+    name: "",
+    doB: "",
+    startDate: "",
+    department:"",
+    salaryScale:"",
+    overTime:"",
+    annualLeave:"",
+    image: "/assets/images/alberto.png",
+  });
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setForm((state) => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
+
+  const data = form
+  const showData = () => {
+    console.log("name", data);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
@@ -26,7 +55,7 @@ const AddStaff = () => {
         <ModalBody>
           <div className="row modal-add">
             <div className="col-12 col-md-9">
-              <Form >
+              <Form onSubmit={onSubmit}>
                 <FormGroup row>
                   <Label htmlFor="firstname" md={5}>
                     Họ và tên
@@ -37,7 +66,8 @@ const AddStaff = () => {
                       id="name"
                       name="name"
                       placeholder="Tên ..."
-                   
+                      value={form.name}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
@@ -51,7 +81,8 @@ const AddStaff = () => {
                       id="doB"
                       name="doB"
                       placeholder="ngày sinh"
-                    
+                      value={form.doB}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
@@ -65,21 +96,19 @@ const AddStaff = () => {
                       id="startDate"
                       name="startDate"
                       placeholder="Ngày vào công ty"
-                    
+                      value={form.startDate}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
 
                 <FormGroup row>
                   <Label htmlFor="department" md={6}>
-                  Phòng ban
+                    Phòng ban
                   </Label>
                   <Col md={6}>
-                  <Input
-                      type="select"
-                      name="department"
-                     
-                    >
+                    <Input type="select" name="department"  value={form.department}
+                      onChange={onChange}>
                       <option>Sale</option>
                       <option>HR</option>
                       <option>Marketing</option>
@@ -100,7 +129,8 @@ const AddStaff = () => {
                       id="salaryScale"
                       name="salaryScale"
                       placeholder="0"
-                    
+                      value={form.salaryScale}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
@@ -114,13 +144,14 @@ const AddStaff = () => {
                       id="overTime"
                       name="overTime"
                       placeholder="0"
-                    
+                      value={form.overTime}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
                   <Label htmlFor="annualLeave" md={6}>
-                  Số ngày nghỉ còn lại
+                    Số ngày nghỉ còn lại
                   </Label>
                   <Col md={6}>
                     <Input
@@ -128,20 +159,20 @@ const AddStaff = () => {
                       id="annualLeave"
                       name="annualLeave"
                       placeholder="0"
-                    
+                      value={form.annualLeave}
+                      onChange={onChange}
                     />
                   </Col>
                 </FormGroup>
-        
               </Form>
             </div>
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={function noRefCheck() {}}>
+          <Button color="primary" onClick={showData}>
             Thêm
           </Button>{" "}
-          <Button onClick={toggle}>hủy</Button>
+          <Button onClick={toggle}>Hủy</Button>
         </ModalFooter>
       </Modal>
     </div>
