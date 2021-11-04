@@ -1,139 +1,138 @@
 .navbar {
-    background-color: brown !important;
-    padding: 3px 40px !important;
-    line-height: 45px;
-    justify-content: space-between !important;
-  }
-  .textnav {
-    color: #fff;
-    margin: 0 6px;
-    font-weight: bold;
-   
-  }
-  
-  .nav-router {
-    margin-top: 20px !important;
-  }
-  
-  .nav-function {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .nav-menu {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .card-img {
-    padding: 3px;
-  }
-  .card-title {
-    text-align: center;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 3px;
-  }
-  .card-title-info {
-    font-size: 23px;
-  }
-  
-  .card-text{
-    line-height: 24px;
-    padding-left: 50px;
-  }
-  .img-info{
-    padding: 6px;
-  }
-  .card{
-    color:#fff;
-    margin-bottom: 10px;
-  
+  background-color: brown !important;
+  padding: 3px 40px !important;
+  line-height: 45px;
+  justify-content: space-between !important;
+}
+.textnav {
+  color: #fff;
+  margin: 0 6px;
+  font-weight: bold;
+}
+
+.nav-router {
+  margin-top: 20px !important;
+}
+
+.nav-function {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-img {
+  padding: 3px;
+}
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 3px;
+}
+.card-title-info {
+  font-size: 23px;
+}
+
+.card-text {
+  line-height: 24px;
+  padding-left: 50px;
+}
+.img-info {
+  padding: 6px;
+}
+.card {
+  color: #fff;
+  margin-bottom: 10px;
+
   opacity: 0.85;
-  }
-  
-  .card-payroll{
-    padding: 10px 
-  }
-  
-  
-  .home{
-    /* background-image: url("./anhnen.png"); */
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  .input-group-text{
-    height: 40px;
-  }
-  
-  a {
-    text-decoration: none !important;
-  }
-  
-  .breadcrumb-item{
+}
+
+.card-payroll {
+  padding: 10px;
+}
+
+.home {
+  /* background-image: url("./anhnen.png"); */
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.input-group-text {
+  height: 40px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.breadcrumb-item {
   font-weight: bold;
   font-size: 18px;
+}
+
+.modal-add {
+  justify-content: center;
+}
+
+.error-form {
+  font-size: 13px !important;
+}
+.add-staff {
+  margin-right: 10px ;
+}
+
+
+@media (max-width: 1300px) {
+  .card-text {
+    line-height: 17px;
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .dropdown1 {
+    display: none;
   }
 
-  .modal-add{
-    justify-content: center ;
+  .card-text {
+    line-height: 15px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .home {
+    /* background-image: url("./anhnen2.png"); */
   }
 
-
-  @media (max-width: 1300px) {
-    .card-text{
-      line-height: 17px;
-      padding-left: 50px;
-    }
-  }
-  
-  @media (max-width: 991px) {
-    .dropdown1 {
-      display: none;
-    }
-   
-    
-    .card-text{
-      line-height: 15px;
-      padding-left: 30px;
-    }
-  }
-  @media (max-width: 767px) {
-  
-    .home{
-      /* background-image: url("./anhnen2.png"); */
-      
-    }
-    
-    .navbarlogo {
-      display: none;
-    }
-  
-    .navbar {
-      line-height: 40px;
-      justify-content: right;
-      margin: 5px 5px;
-      padding: 0 20px !important;
-      align-items: center;
-    }
-    .nav-item {
-
-      text-align: center;
-    }
-  
-    .input-group-text{
-      height: 35px;
-    }
-  
-    input{
-      height:  35px;
-    }
+  .navbarlogo {
+    display: none;
   }
 
-  
-  
+  .navbar {
+    line-height: 40px;
+    justify-content: right;
+    margin: 5px 5px;
+    padding: 0 20px !important;
+    align-items: center;
+  }
+  .nav-item {
+    text-align: center;
+  }
+
+  .input-group-text {
+    height: 35px;
+  }
+
+  input {
+    height: 35px;
+  }
+}

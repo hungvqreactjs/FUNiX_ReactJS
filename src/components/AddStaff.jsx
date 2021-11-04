@@ -10,7 +10,9 @@ import {
   Col,
   Input,
   Button,
+  FormFeedback,
 } from "reactstrap";
+
 
 const AddStaff = () => {
   const [modal, setModal] = useState(false);
@@ -20,11 +22,20 @@ const AddStaff = () => {
     name: "",
     doB: "",
     startDate: "",
-    department:"",
-    salaryScale:"",
-    overTime:"",
-    annualLeave:"",
+    department: "",
+    salaryScale: "",
+    overTime: "",
+    annualLeave: "",
     image: "/assets/images/alberto.png",
+  });
+  const [error, setError] = useState({
+    name: "",
+    doB: "",
+    startDate: "",
+    department: "",
+    salaryScale: "",
+    overTime: "",
+    annualLeave: "",
   });
 
   const onChange = (e) => {
@@ -35,27 +46,79 @@ const AddStaff = () => {
     }));
   };
 
+  const onBlur = (e) => {
+    e.preventDefault();
+     
+     if (form.name.length && form.name.length < 4) {
+      setError(() => ({
+        name: "Tên phải trên 4 ký tự",
+      }));
+    } else if (form.name.length && form.name.length > 20) {
+      setError(() => ({
+        name: "Tên phải dưới 20 ký tự",
+      }));
+    } else {
+      setError(() => ({
+        name: "",
+      }));
+    }
 
-  const data = form
-  const showData = () => {
+    if (form.salaryScale >3){
+      setError(() => ({
+        salaryScale: "Hệ số lương không vượt quá 3",
+      }));
+    }
+  };
+
+  const data = form;
+  const showData = (e) => {
+
     console.log("name", data);
+
+    e.preventDefault();
+
+    if (form.name.length === 0) {
+      setError(() => ({
+        name: "Hãy nhập tên",
+      }));
+    }  
+    if (form.salaryScale === ""){
+      setError(() => ({
+        salaryScale: "Hãy nhập hệ số lương",
+      }));
+    } 
+    if (form.overTime === ""){
+      setError(() => ({
+        overTime: "Hãy nhập số ngày làm thêm",
+      }));
+    } 
+    if (form.annualLeave ===""){
+      setError(() => ({
+        annualLeave: "Hãy nhập hệ số ngày nghỉ còn lại",
+      }));
+    } 
+   
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
   };
 
   return (
     <div>
-      <Button onClick={toggle}>
-        <i class="fa fa-user-plus "></i>
+      <Button onClick={toggle} className="add-staff">
+        <i class="fa fa-user-plus fa-sm"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader>Thêm nhân viên</ModalHeader>
         <ModalBody>
           <div className="row modal-add">
             <div className="col-12 col-md-9">
-              <Form onSubmit={onSubmit}>
+              <Form
+                onSubmit={onSubmit}
+                value={form.id}
+                onChange={{ onSubmit } === form.id + 1}
+              >
                 <FormGroup row>
                   <Label htmlFor="firstname" md={5}>
                     Họ và tên
@@ -65,10 +128,15 @@ const AddStaff = () => {
                       type="text"
                       id="name"
                       name="name"
-                      placeholder="Tên ..."
+                      placeholder="VD: Nguyễn Văn A"
                       value={form.name}
+                      invalid={error.name !== ""}
                       onChange={onChange}
+                      onBlur={onBlur}
                     />
+                    <FormFeedback className="error-form">
+                      {error.name}
+                    </FormFeedback>
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -107,8 +175,12 @@ const AddStaff = () => {
                     Phòng ban
                   </Label>
                   <Col md={6}>
-                    <Input type="select" name="department"  value={form.department}
-                      onChange={onChange}>
+                    <Input
+                      type="select"
+                      name="department"
+                      value={form.department}
+                      onChange={onChange}
+                    >
                       <option>Sale</option>
                       <option>HR</option>
                       <option>Marketing</option>
@@ -125,13 +197,19 @@ const AddStaff = () => {
                   </Label>
                   <Col md={6}>
                     <Input
-                      type="text"
+                      type="number"
                       id="salaryScale"
                       name="salaryScale"
+                      min="0"
                       placeholder="0"
                       value={form.salaryScale}
+                      invalid={!!error.salaryScale }
                       onChange={onChange}
+                      onBlur={onBlur}
                     />
+                      <FormFeedback className="error-form">
+                      {error.salaryScale}
+                    </FormFeedback>
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -140,13 +218,19 @@ const AddStaff = () => {
                   </Label>
                   <Col md={6}>
                     <Input
-                      type="text"
+                      type="number"
                       id="overTime"
                       name="overTime"
+                      min="0"
                       placeholder="0"
                       value={form.overTime}
+                      invalid={!!error.overTime }
                       onChange={onChange}
+                      onBlur={onBlur}
                     />
+                    <FormFeedback className="error-form">
+                      {error.overTime}
+                    </FormFeedback>
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -155,13 +239,18 @@ const AddStaff = () => {
                   </Label>
                   <Col md={6}>
                     <Input
-                      type="text"
+                      type="number"
                       id="annualLeave"
                       name="annualLeave"
                       placeholder="0"
                       value={form.annualLeave}
+                      invalid={!!error.annualLeave }
                       onChange={onChange}
+                      onBlur={onBlur}
                     />
+                    <FormFeedback className="error-form">
+                      {error.annualLeave}
+                    </FormFeedback>
                   </Col>
                 </FormGroup>
               </Form>

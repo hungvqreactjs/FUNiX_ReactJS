@@ -27,7 +27,7 @@ const Staffs = () => {
             <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
           </Breadcrumb>
         </div>
-        <div className="nav-function col-4">
+        <div className="nav-function col-3">
         <AddStaff/>
           <InputSearch onSubmit={submitHandler} refName={inputRef} />
         </div>
