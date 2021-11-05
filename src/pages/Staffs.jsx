@@ -5,6 +5,7 @@ import Staff from "../components/Staff";
 import InputSearch from "../components/InputSearch"
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import AddStaff from "../components/AddStaff";
 
 const Staffs = () => {
   const inputRef = useRef(null);
@@ -27,7 +28,7 @@ const Staffs = () => {
           </Breadcrumb>
         </div>
         <div className="nav-function col-3">
-       
+       <AddStaff/>
           <InputSearch onSubmit={submitHandler} refName={inputRef} />
         </div>
         <hr />
