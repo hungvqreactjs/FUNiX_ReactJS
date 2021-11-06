@@ -3,17 +3,25 @@ import React, { useState, useRef } from "react";
 import { STAFFS } from "../data/staffs";
 import Staff from "../components/Staff";
 import InputSearch from "../components/InputSearch";
-import AddStaff from "../components/AddStaff"
+import AddStaff from "../components/AddStaff";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Staffs = () => {
   const inputRef = useRef(null);
   const [searchKey, setSearchKey] = useState("");
+  const [listStaff, setListStaff] = useState(STAFFS);
 
   const submitHandler = (e) => {
     e.preventDefault();
     setSearchKey(inputRef.current.value);
+  };
+
+  const AddPerson = (staff) => {
+    console.log(staff);
+    const id = Math.floor(Math.random() * 100) + 1;
+    const newStaff = {id, ...staff};
+    setListStaff([...listStaff, newStaff]);
   };
 
   return (
@@ -28,12 +36,12 @@ const Staffs = () => {
           </Breadcrumb>
         </div>
         <div className="nav-function col-3">
-        <AddStaff/>
+          <AddStaff onAdd={AddPerson} />
           <InputSearch onSubmit={submitHandler} refName={inputRef} />
         </div>
         <hr />
       </div>
-      {STAFFS.filter((staff) => {
+      {listStaff.filter((staff) => {
         if (searchKey === "") {
           return staff;
         } else if (staff.name.toLowerCase().includes(searchKey.toLowerCase())) {
@@ -42,7 +50,7 @@ const Staffs = () => {
       }).map((staff, index) => {
         return (
           <div className={`col-6 col-sm-4 col-lg-2`} key={index}>
-            <Staff staff={staff} />
+            <Staff staff={staff}/>
           </div>
         );
       })}

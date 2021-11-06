@@ -84,7 +84,8 @@ a {
 }
 
 .error-form {
-  font-size: 13px !important;
+  
+  color: red;
 }
 .add-staff {
   margin-right: 10px ;
