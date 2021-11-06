@@ -12,13 +12,13 @@ import {
   Button,
   FormFeedback,
 } from "reactstrap";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-
-const AddStaff = () => {
+const AddStaff = ({ onAdd }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [form, setForm] = useState({
-    id: 15,
     name: "",
     doB: "",
     startDate: "",
@@ -26,16 +26,20 @@ const AddStaff = () => {
     salaryScale: "",
     overTime: "",
     annualLeave: "",
-    image: "/assets/images/alberto.png",
+    image: '/assets/images/ddg1.jpg',
   });
-  const [error, setError] = useState({
-    name: "",
-    doB: "",
-    startDate: "",
-    department: "",
-    salaryScale: "",
-    overTime: "",
-    annualLeave: "",
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      doB: "",
+      startDate: "",
+      department: "",
+      salaryScale: "",
+      overTime: "",
+      annualLeave: "",
+      image: "/assets/images/alberto.png",
+    }
   });
 
   const onChange = (e) => {
@@ -45,80 +49,35 @@ const AddStaff = () => {
       [name]: value,
     }));
   };
-
-  const onBlur = (e) => {
-    e.preventDefault();
-     
-     if (form.name.length && form.name.length < 4) {
-      setError(() => ({
-        name: "Tên phải trên 4 ký tự",
-      }));
-    } else if (form.name.length && form.name.length > 20) {
-      setError(() => ({
-        name: "Tên phải dưới 20 ký tự",
-      }));
-    } else {
-      setError(() => ({
-        name: "",
-      }));
-    }
-
-    if (form.salaryScale >3){
-      setError(() => ({
-        salaryScale: "Hệ số lương không vượt quá 3",
-      }));
-    }
-  };
-
   const data = form;
-  const showData = (e) => {
-
-    console.log("name", data);
-
-    e.preventDefault();
-
-    if (form.name.length === 0) {
-      setError(() => ({
-        name: "Hãy nhập tên",
-      }));
-    }  
-    if (form.salaryScale === ""){
-      setError(() => ({
-        salaryScale: "Hãy nhập hệ số lương",
-      }));
-    } 
-    if (form.overTime === ""){
-      setError(() => ({
-        overTime: "Hãy nhập số ngày làm thêm",
-      }));
-    } 
-    if (form.annualLeave ===""){
-      setError(() => ({
-        annualLeave: "Hãy nhập hệ số ngày nghỉ còn lại",
-      }));
-    } 
-   
-  };
 
   const onSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    onAdd(data);
+    setForm({
+      name: "",
+      doB: "",
+      startDate: "",
+      department: "",
+      salaryScale: "",
+      overTime: "",
+      annualLeave: "",
+      image: "/assets/images/alberto.png",
+    });
+    toggle();
   };
 
   return (
     <div>
       <Button onClick={toggle} className="add-staff">
-        <i class="fa fa-user-plus fa-sm"></i>
+        <i className="fa fa-user-plus fa-sm"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader>Thêm nhân viên</ModalHeader>
-        <ModalBody>
-          <div className="row modal-add">
-            <div className="col-12 col-md-9">
-              <Form
-                onSubmit={onSubmit}
-                value={form.id}
-                onChange={{ onSubmit } === form.id + 1}
-              >
+        <Form onSubmit={onSubmit}>
+          <ModalHeader>Thêm nhân viên</ModalHeader>
+          <ModalBody>
+            <div className="row modal-add">
+              <div className="col-12 col-md-9">
                 <FormGroup row>
                   <Label htmlFor="firstname" md={5}>
                     Họ và tên
@@ -129,14 +88,9 @@ const AddStaff = () => {
                       id="name"
                       name="name"
                       placeholder="VD: Nguyễn Văn A"
-                      value={form.name}
-                      invalid={error.name !== ""}
-                      onChange={onChange}
-                      onBlur={onBlur}
+                      value={formik.values.name}
+                      onChange={formik.handleChange} 
                     />
-                    <FormFeedback className="error-form">
-                      {error.name}
-                    </FormFeedback>
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -148,9 +102,9 @@ const AddStaff = () => {
                       type="date"
                       id="doB"
                       name="doB"
+                      value={formik.values.doB}
                       placeholder="ngày sinh"
-                      value={form.doB}
-                      onChange={onChange}
+                      onChange={formik.handleChange} 
                     />
                   </Col>
                 </FormGroup>
@@ -164,8 +118,8 @@ const AddStaff = () => {
                       id="startDate"
                       name="startDate"
                       placeholder="Ngày vào công ty"
-                      value={form.startDate}
-                      onChange={onChange}
+                      value={formik.values.startDate}
+                      onChange={formik.handleChange} 
                     />
                   </Col>
                 </FormGroup>
@@ -178,8 +132,8 @@ const AddStaff = () => {
                     <Input
                       type="select"
                       name="department"
-                      value={form.department}
-                      onChange={onChange}
+                      value={formik.values.department}
+                      onChange={formik.handleChange} 
                     >
                       <option>Sale</option>
                       <option>HR</option>
@@ -202,12 +156,10 @@ const AddStaff = () => {
                       name="salaryScale"
                       min="0"
                       placeholder="0"
-                      value={form.salaryScale}
-                      invalid={!!error.salaryScale }
-                      onChange={onChange}
-                      onBlur={onBlur}
+                      value={formik.values.salaryScale}
+                      onChange={formik.handleChange} 
                     />
-                      <FormFeedback className="error-form">
+                    <FormFeedback className="error-form">
                       {error.salaryScale}
                     </FormFeedback>
                   </Col>
@@ -223,10 +175,8 @@ const AddStaff = () => {
                       name="overTime"
                       min="0"
                       placeholder="0"
-                      value={form.overTime}
-                      invalid={!!error.overTime }
-                      onChange={onChange}
-                      onBlur={onBlur}
+                      value={formik.values.overTime}
+                      onChange={formik.handleChange} 
                     />
                     <FormFeedback className="error-form">
                       {error.overTime}
@@ -243,26 +193,24 @@ const AddStaff = () => {
                       id="annualLeave"
                       name="annualLeave"
                       placeholder="0"
-                      value={form.annualLeave}
-                      invalid={!!error.annualLeave }
-                      onChange={onChange}
-                      onBlur={onBlur}
+                      value={formik.values.annualLeave}
+                      onChange={formik.handleChange} 
                     />
                     <FormFeedback className="error-form">
                       {error.annualLeave}
                     </FormFeedback>
                   </Col>
                 </FormGroup>
-              </Form>
+              </div>
             </div>
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={showData}>
-            Thêm
-          </Button>{" "}
-          <Button onClick={toggle}>Hủy</Button>
-        </ModalFooter>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" type="submit">
+              Thêm
+            </Button>{" "}
+            <Button onClick={toggle}>Hủy</Button>
+          </ModalFooter>
+        </Form>
       </Modal>
     </div>
   );
