@@ -33,17 +33,17 @@ const AddStaff = ({ onAdd }) => {
       <Button onClick={toggle} className="add-staff">
         <i class="fa fa-user-plus fa-sm"></i>
       </Button>
-      <Modal isOpen={modal} toggle={toggle}>
+      <Modal isOpen={modal} toggle={toggle} size="lg">
         <LocalForm onSubmit={(values) => onSubmit(values)}>
           <ModalHeader>Thêm nhân viên</ModalHeader>
           <ModalBody>
             <div className="row modal-add">
               <div className="col-12 col-md-9">
                 <FormGroup row>
-                  <Label htmlFor="firstname" md={5}>
+                  <Label htmlFor="firstname" md={4}>
                     Họ và tên
                   </Label>
-                  <Col md={7}>
+                  <Col md={8}>
                     <Control.text
                       model=".name"
                       id="name"
@@ -64,16 +64,16 @@ const AddStaff = ({ onAdd }) => {
                       messages={{
                         minLength: "Tên phải trên 4 ký tự",
                         maxLength: "Tên phải dưới 20 ký tự",
-                        validName: "Tên không hợp lệ ( tên phải là chữ )",
+                        validName: "Tên không hợp lệ ",
                       }}
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label htmlFor="doB" md={5}>
+                  <Label htmlFor="doB" md={4}>
                     Ngày sinh
                   </Label>
-                  <Col md={7}>
+                  <Col md={8}>
                     <Control.text
                       model=".doB"
                       type="date"
@@ -96,10 +96,10 @@ const AddStaff = ({ onAdd }) => {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label htmlFor="startDate" md={5}>
+                  <Label htmlFor="startDate" md={4}>
                     Ngày vào công ty
                   </Label>
-                  <Col md={7}>
+                  <Col md={8}>
                     <Control.text
                       model=".startDate"
                       type="date"
@@ -123,10 +123,10 @@ const AddStaff = ({ onAdd }) => {
                 </FormGroup>
 
                 <FormGroup row>
-                  <Label htmlFor="department" md={6}>
+                  <Label htmlFor="department" md={4}>
                     Phòng ban
                   </Label>
-                  <Col md={6}>
+                  <Col md={8}>
                     <Control.select
                       model=".department"
                       name="department"
@@ -143,10 +143,10 @@ const AddStaff = ({ onAdd }) => {
                 </FormGroup>
 
                 <FormGroup row>
-                  <Label htmlFor="salaryScale" md={6}>
+                  <Label htmlFor="salaryScale" md={4}>
                     Hệ số lương
                   </Label>
-                  <Col md={6}>
+                  <Col md={8}>
                     <Control.text
                       model=".salaryScale"
                       id="salaryScale"
@@ -173,10 +173,10 @@ const AddStaff = ({ onAdd }) => {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label htmlFor="overTime" md={6}>
+                  <Label htmlFor="overTime" md={4}>
                     Sô ngày làm thêm
                   </Label>
-                  <Col md={6}>
+                  <Col md={8}>
                     <Control.text
                       model=".overTime"
                       id="overTime"
@@ -202,10 +202,10 @@ const AddStaff = ({ onAdd }) => {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label htmlFor="annualLeave" md={6}>
+                  <Label htmlFor="annualLeave" md={4}>
                     Số ngày nghỉ còn lại
                   </Label>
-                  <Col md={6}>
+                  <Col md={8}>
                     <Control.text
                       model=".annualLeave"
                       id="annualLeave"

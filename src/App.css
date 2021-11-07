@@ -109,10 +109,7 @@ a {
   }
 }
 @media (max-width: 767px) {
-  .home {
-    /* background-image: url("./anhnen2.png"); */
-  }
-
+ 
   .navbarlogo {
     display: none;
   }
