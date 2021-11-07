@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useState, useRef } from "react";
 import { STAFFS } from "../data/staffs";
 import Staff from "../components/Staff";

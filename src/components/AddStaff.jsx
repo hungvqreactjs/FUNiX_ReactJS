@@ -11,6 +11,12 @@ import {
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !val || val.length <= len;
+const minLength = (len) => (val) => val && val.length >= len;
+const isNumber = (val) => /^[0-9]+$/i.test(val);
+const validName = (val) => /^[a-zA-Z]+$/i.test(val);
+
 const AddStaff = ({ onAdd }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -44,6 +50,22 @@ const AddStaff = ({ onAdd }) => {
                       name="name"
                       placeholder="VD: Nguyễn Văn A"
                       className="form-control"
+                      validators={{
+                        required,
+                        validName,
+                        minLength: minLength(4),
+                        maxLength: maxLength(20),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".name"
+                      show="touched"
+                      messages={{
+                        minLength: "Tên phải trên 4 ký tự",
+                        maxLength: "Tên phải dưới 20 ký tự",
+                        validName: "Tên không hợp lệ ( tên phải là chữ )",
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -59,6 +81,17 @@ const AddStaff = ({ onAdd }) => {
                       name="doB"
                       placeholder="ngày sinh"
                       className="form-control"
+                      validators={{
+                        required,
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".doB"
+                      show="touched"
+                      messages={{
+                        required: "Hãy nhập năm sinh",
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -74,6 +107,17 @@ const AddStaff = ({ onAdd }) => {
                       name="startDate"
                       placeholder="Ngày vào công ty"
                       className="form-control"
+                      validators={{
+                        required,
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".startDate"
+                      show="touched"
+                      messages={{
+                        required: "Hãy nhập ngày vào công tý",
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -107,9 +151,24 @@ const AddStaff = ({ onAdd }) => {
                       model=".salaryScale"
                       id="salaryScale"
                       name="salaryScale"
-                      min="0"
                       placeholder="0"
                       className="form-control"
+                      validators={{
+                        required,
+                        isNumber,
+                        minLength: minLength(1),
+                        maxLength: maxLength(3),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".salaryScale"
+                      show="touched"
+                      messages={{
+                        isNumber: "Hệ số lương không hợp lệ ",
+                        minLength: "Hệ số lương phải trên 1 ",
+                        maxLength: "Hệ số lương phải dưới 3",
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -122,9 +181,23 @@ const AddStaff = ({ onAdd }) => {
                       model=".overTime"
                       id="overTime"
                       name="overTime"
-                      min="0"
                       placeholder="0"
                       className="form-control"
+                      validators={{
+                        required,
+                        isNumber,
+                        minLength: minLength(1),
+                        maxLength: maxLength(3),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".overTime"
+                      show="touched"
+                      messages={{
+                        isNumber: "Số ngày tăng ca không hợp lệ ",
+                        maxLength: "Số ngày tăng ca phải dưới 30",
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -139,6 +212,21 @@ const AddStaff = ({ onAdd }) => {
                       name="annualLeave"
                       placeholder="0"
                       className="form-control"
+                      validators={{
+                        required,
+                        isNumber,
+                        minLength: minLength(1),
+                        maxLength: maxLength(3),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".annualLeave"
+                      show="touched"
+                      messages={{
+                        isNumber: "Số ngày nghỉ không hợp lệ",
+                        maxLength: " Số ngày nghỉ phải dưới 30",
+                      }}
                     />
                   </Col>
                 </FormGroup>

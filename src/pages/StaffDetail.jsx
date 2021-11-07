@@ -24,7 +24,7 @@ const StaffDetail = () => {
         <BreadcrumbItem>
           <Link to="/nhan-vien">Nhân viên</Link>
         </BreadcrumbItem>
-        <BreadcrumbItem active>{location.staff.name}</BreadcrumbItem>
+        <BreadcrumbItem active>{location.myStaff.name}</BreadcrumbItem>
       </Breadcrumb>
       <hr />
       <Card className="card-info" style={{backgroundImage: `url(/assets/images/logo1.png)`}}>
@@ -33,21 +33,21 @@ const StaffDetail = () => {
             <CardImg
               className=" img-info"
               width="100%"
-              src={location.staff.image}
-              alt={location.staff.name}
+              src={location.myStaff.image}
+              alt={location.myStaff.name}
             />
           </div>
           <CardBody className="col-lg-9 col-sm-8 col-12">
-            <CardTitle className="card-title-info">{location.staff.name}</CardTitle>
+            <CardTitle className="card-title-info">{location.myStaff.name}</CardTitle>
             <CardText>
-              Ngày sinh: {dateFormat(location.staff.doB, "dd/mm/yyyy")}
+              Ngày sinh: {dateFormat(location.myStaff.doB, "dd/mm/yyyy")}
             </CardText>
-            <CardText>Phòng ban: {location.staff.department.name}</CardText>
+            <CardText>Phòng ban: {location.myStaff.department.name}</CardText>
             <CardText>
-              Ngày vào công ty: {dateFormat(location.staff.startDate, "dd/mm/yyyy")}
+              Ngày vào công ty: {dateFormat(location.myStaff.startDate, "dd/mm/yyyy")}
             </CardText>
-            <CardText>Số ngày làm thêm: {location.staff.overTime}</CardText>
-            <CardText>Số ngày nghỉ còn lại: {location.staff.annualLeave}</CardText>
+            <CardText>Số ngày làm thêm: {location.myStaff.overTime}</CardText>
+            <CardText>Số ngày nghỉ còn lại: {location.myStaff.annualLeave}</CardText>
           </CardBody>
         </div>
       </Card>

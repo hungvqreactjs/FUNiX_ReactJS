@@ -8,7 +8,7 @@ const Staff = ({ staff, onClick }) => {
        <Link
         to={{
           pathname: `/nhan-vien/${staff.id}`,
-          staff: staff,
+          myStaff: staff,
         }}
       >
         <CardImg width="100%" src={staff.image} alt={staff.name} />
