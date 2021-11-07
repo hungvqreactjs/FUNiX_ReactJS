@@ -4,28 +4,22 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Form,
   FormGroup,
   Label,
   Col,
-  Input,
   Button,
-  FormFeedback,
 } from "reactstrap";
+import { Control, LocalForm, Errors } from "react-redux-form";
 
-
-const AddStaff = () => {
+const AddStaff = ({ onAdd }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
- 
 
-  const showData = (e) => {
-
-    e.preventDefault();
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault(); 
+  const onSubmit = (values) => {
+    //values.preventDefault();
+    onAdd(values);
+    console.log("add ", onAdd);
+    toggle();
   };
 
   return (
@@ -34,24 +28,23 @@ const AddStaff = () => {
         <i class="fa fa-user-plus fa-sm"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader>Thêm nhân viên</ModalHeader>
-        <ModalBody>
-          <div className="row modal-add">
-            <div className="col-12 col-md-9">
-              <Form
-                onSubmit={onSubmit}
-              >
+        <LocalForm onSubmit={(values) => onSubmit(values)}>
+          <ModalHeader>Thêm nhân viên</ModalHeader>
+          <ModalBody>
+            <div className="row modal-add">
+              <div className="col-12 col-md-9">
                 <FormGroup row>
                   <Label htmlFor="firstname" md={5}>
                     Họ và tên
                   </Label>
                   <Col md={7}>
-                    <Input
-                      type="text"
+                    <Control.text
+                      model=".name"
                       id="name"
                       name="name"
                       placeholder="VD: Nguyễn Văn A"
-                    />  
+                      className="form-control"
+                    />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -59,12 +52,13 @@ const AddStaff = () => {
                     Ngày sinh
                   </Label>
                   <Col md={7}>
-                    <Input
+                    <Control.text
+                      model=".doB"
                       type="date"
                       id="doB"
                       name="doB"
                       placeholder="ngày sinh"
-                   
+                      className="form-control"
                     />
                   </Col>
                 </FormGroup>
@@ -73,12 +67,13 @@ const AddStaff = () => {
                     Ngày vào công ty
                   </Label>
                   <Col md={7}>
-                    <Input
+                    <Control.text
+                      model=".startDate"
                       type="date"
                       id="startDate"
                       name="startDate"
                       placeholder="Ngày vào công ty"
-                    
+                      className="form-control"
                     />
                   </Col>
                 </FormGroup>
@@ -88,10 +83,10 @@ const AddStaff = () => {
                     Phòng ban
                   </Label>
                   <Col md={6}>
-                    <Input
-                      type="select"
+                    <Control.select
+                      model=".department"
                       name="department"
-                    
+                      className="form-control"
                     >
                       <option>Sale</option>
                       <option>HR</option>
@@ -99,7 +94,7 @@ const AddStaff = () => {
                       <option>IT</option>
                       <option>Finance</option>
                       Finance
-                    </Input>
+                    </Control.select>
                   </Col>
                 </FormGroup>
 
@@ -108,14 +103,14 @@ const AddStaff = () => {
                     Hệ số lương
                   </Label>
                   <Col md={6}>
-                    <Input
-                      type="number"
+                    <Control.text
+                      model=".salaryScale"
                       id="salaryScale"
                       name="salaryScale"
                       min="0"
                       placeholder="0"
+                      className="form-control"
                     />
-                    
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -123,13 +118,13 @@ const AddStaff = () => {
                     Sô ngày làm thêm
                   </Label>
                   <Col md={6}>
-                    <Input
-                      type="number"
+                    <Control.text
+                      model=".overTime"
                       id="overTime"
                       name="overTime"
                       min="0"
                       placeholder="0"
-                      
+                      className="form-control"
                     />
                   </Col>
                 </FormGroup>
@@ -138,24 +133,25 @@ const AddStaff = () => {
                     Số ngày nghỉ còn lại
                   </Label>
                   <Col md={6}>
-                    <Input
-                      type="number"
+                    <Control.text
+                      model=".annualLeave"
                       id="annualLeave"
                       name="annualLeave"
                       placeholder="0"
+                      className="form-control"
                     />
                   </Col>
                 </FormGroup>
-              </Form>
+              </div>
             </div>
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={showData}>
-            Thêm
-          </Button>{" "}
-          <Button onClick={toggle}>Hủy</Button>
-        </ModalFooter>
+          </ModalBody>
+          <ModalFooter>
+            <Button type="submit" color="primary">
+              Thêm
+            </Button>{" "}
+            <Button onClick={toggle}>Hủy</Button>
+          </ModalFooter>
+        </LocalForm>
       </Modal>
     </div>
   );

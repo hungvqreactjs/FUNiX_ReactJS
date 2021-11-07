@@ -10,10 +10,19 @@ import AddStaff from "../components/AddStaff";
 const Staffs = () => {
   const inputRef = useRef(null);
   const [searchKey, setSearchKey] = useState("");
+  const [listStaff, setListStaff] = useState(STAFFS);
 
   const submitHandler = (e) => {
     e.preventDefault();
     setSearchKey(inputRef.current.value);
+  };
+
+  const AddPerson = (staff) => {
+    console.log("staff",staff);
+    const id = Math.floor(Math.random() * 100) + 1;
+    const image = '/assets/images/rv19.jpg';
+    const newStaff = {id,image, ...staff};
+    setListStaff([...listStaff, newStaff]);
   };
 
   return (
@@ -28,12 +37,12 @@ const Staffs = () => {
           </Breadcrumb>
         </div>
         <div className="nav-function col-3">
-       <AddStaff/>
+        <AddStaff onAdd={AddPerson} />
           <InputSearch onSubmit={submitHandler} refName={inputRef} />
         </div>
         <hr />
       </div>
-      {STAFFS.filter((staff) => {
+      {listStaff.filter((staff) => {
         if (searchKey === "") {
           return staff;
         } else if (staff.name.toLowerCase().includes(searchKey.toLowerCase())) {
