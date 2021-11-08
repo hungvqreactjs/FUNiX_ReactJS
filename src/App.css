@@ -57,7 +57,7 @@
 }
 
 .home {
-  /* background-image: url("./anhnen.png"); */
+  background-image: url("./anhnen.png"); 
   width: 100%;
   height: 100vh;
   object-fit: cover;
@@ -109,6 +109,11 @@ a {
   }
 }
 @media (max-width: 767px) {
+  .home {
+    background-image: url("./anhnen2.png"); 
+   
+  }
+  
  
   .navbarlogo {
     display: none;

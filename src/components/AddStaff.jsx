@@ -107,6 +107,7 @@ const AddStaff = ({ onAdd }) => {
                       name="startDate"
                       placeholder="Ngày vào công ty"
                       className="form-control"
+                   
                       validators={{
                         required,
                       }}
@@ -131,14 +132,25 @@ const AddStaff = ({ onAdd }) => {
                       model=".department"
                       name="department"
                       className="form-control"
-                    >
-                      <option>Sale</option>
-                      <option>HR</option>
-                      <option>Marketing</option>
-                      <option>IT</option>
-                      <option>Finance</option>
-                      Finance
+                      validators={{
+                        required,
+                      }}
+                    > <option value="" selected disabled>Chọn phòng ban</option>
+                      <option value="Sale">Sale</option>
+                      <option value="HR">HR</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="IT">IT</option>
+                      <option value="Finance">Finance</option>
                     </Control.select>
+                 
+                    <Errors
+                      className="text-danger"
+                      model=".department"
+                      show="touched"
+                      messages={{
+                        required: "Hãy chọn phòng ban",
+                      }}
+                    />
                   </Col>
                 </FormGroup>
 

@@ -25,6 +25,7 @@ const Staffs = () => {
   };
 
   return (
+    <div className="container">
     <div className="row">
       <div className="row nav-menu">
         <div className="col-4">
@@ -54,6 +55,7 @@ const Staffs = () => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ const StaffDetail = () => {
 
 
   return (
+    <div className="container">
     <div className="row">
       <Breadcrumb className="nav-router">
         <BreadcrumbItem>
@@ -42,7 +43,7 @@ const StaffDetail = () => {
             <CardText>
               Ngày sinh: {dateFormat(location.myStaff.doB, "dd/mm/yyyy")}
             </CardText>
-            <CardText>Phòng ban: {location.myStaff.department.name}</CardText>
+            <CardText>Phòng ban: {location.myStaff.department.name || location.myStaff.department}</CardText>
             <CardText>
               Ngày vào công ty: {dateFormat(location.myStaff.startDate, "dd/mm/yyyy")}
             </CardText>
@@ -51,6 +52,7 @@ const StaffDetail = () => {
           </CardBody>
         </div>
       </Card>
+    </div>
     </div>
   );
 };

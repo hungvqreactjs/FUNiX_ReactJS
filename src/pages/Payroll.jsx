@@ -17,6 +17,7 @@ const Payroll = () => {
   }));
 
   return (
+    <div className="container">
     <div className="row">
       <div className="row">
         <Breadcrumb className="nav-router">
@@ -43,6 +44,7 @@ const Payroll = () => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };
