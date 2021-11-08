@@ -17,32 +17,34 @@ const Payroll = () => {
   }));
 
   return (
-    <div className="row">
+    <div className="container">
       <div className="row">
-        <Breadcrumb className="nav-router">
-          <BreadcrumbItem>
-            <Link to="/trang-chu">Trang chủ</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem active>Bảng lương</BreadcrumbItem>
-        </Breadcrumb>
-        <hr />
+        <div className="row">
+          <Breadcrumb className="nav-router">
+            <BreadcrumbItem>
+              <Link to="/trang-chu">Trang chủ</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>Bảng lương</BreadcrumbItem>
+          </Breadcrumb>
+          <hr />
+        </div>
+        {listSalary.map((staff, index) => {
+          return (
+            <div className="col-lg-4 col-sm-6 col-12 " key={index}>
+              <Card
+                className="card-payroll"
+                style={{ backgroundImage: `url(/assets/images/logo1.png)` }}
+              >
+                <CardTitle>{staff.name}</CardTitle>
+                <CardText>Mã Nhân Viên: {staff.id}</CardText>
+                <CardText>Hệ Sô lương: {staff.salaryScale}</CardText>
+                <CardText>Số ngày làm thêm {staff.overTime}</CardText>
+                <CardTitle>Lương: {staff.salary}</CardTitle>
+              </Card>
+            </div>
+          );
+        })}
       </div>
-      {listSalary.map((staff, index) => {
-        return (
-          <div className="col-lg-4 col-sm-6 col-12 " key={index}>
-            <Card
-              className="card-payroll"
-              style={{ backgroundImage: `url(/assets/images/logo1.png)` }}
-            >
-              <CardTitle>{staff.name}</CardTitle>
-              <CardText>Mã Nhân Viên: {staff.id}</CardText>
-              <CardText>Hệ Sô lương: {staff.salaryScale}</CardText>
-              <CardText>Số ngày làm thêm {staff.overTime}</CardText>
-              <CardTitle>Lương: {staff.salary}</CardTitle>
-            </Card>
-          </div>
-        );
-      })}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useState, useRef } from "react";
 import { STAFFS } from "../data/staffs";
 import Staff from "../components/Staff";
@@ -18,13 +17,14 @@ const Staffs = () => {
   };
 
   const AddPerson = (staff) => {
-    console.log(staff);
+
     const id = Math.floor(Math.random() * 100) + 1;
     const newStaff = {id, ...staff};
     setListStaff([...listStaff, newStaff]);
   };
 
   return (
+    <div className="container">
     <div className="row">
       <div className="row nav-menu">
         <div className="col-4">
@@ -54,6 +54,7 @@ const Staffs = () => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import { Link, useLocation } from "react-router-dom";
 const StaffDetail = () => {
   let location = useLocation();
   return (
+    <div className="container">
     <div className="row">
       <Breadcrumb className="nav-router">
         <BreadcrumbItem>
@@ -49,6 +50,7 @@ const StaffDetail = () => {
           </CardBody>
         </div>
       </Card>
+    </div>
     </div>
   );
 };

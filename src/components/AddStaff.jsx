@@ -220,7 +220,7 @@ const AddStaff = ({ onAdd }) => {
             <Button color="primary" type="submit">
               Thêm
             </Button>{" "}
-            <Button onClick={() => {toggle(); formik.resetForm()}}>Hủy</Button>
+            <Button color="danger" onClick={() => {toggle(); formik.resetForm()}}>Hủy</Button>
           </ModalFooter>
         </Form>
       </Modal>
