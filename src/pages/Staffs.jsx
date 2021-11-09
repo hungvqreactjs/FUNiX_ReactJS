@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import AddStaff from "../components/AddStaff";
 
 const Staffs = ({props}) => {
-console.log("props",props)
   const inputRef = useRef(null);
   const [searchKey, setSearchKey] = useState("");
   const [listStaff, setListStaff] = useState(props);
