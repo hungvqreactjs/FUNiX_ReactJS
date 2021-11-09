@@ -91,7 +91,6 @@ const AddStaff = ({ onAdd }) => {
                       show="touched"
                       messages={{
                         required: "Hãy nhập năm sinh",
-                        maxNumber:"1"
                         
                       }}
                     />

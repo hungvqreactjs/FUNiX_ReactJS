@@ -16,7 +16,6 @@ const Staffs = ({props}) => {
   };
 
   const AddPerson = (staff) => {
-    console.log("staff",staff);
     const id = Math.floor(Math.random() * 100) + 1;
     const image = '/assets/images/rv19.jpg';
     const newStaff = {id,image, ...staff};
