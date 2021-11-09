@@ -16,15 +16,16 @@ const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => /^[0-9]+$/i.test(val);
 const validName = (val) => /^[a-zA-Z]+$/i.test(val);
+const minNumber = (len) => (val) => !val || val >= len;
+const maxNumber = (len) => (val) => val && val <= len;
+
 
 const AddStaff = ({ onAdd }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   const onSubmit = (values) => {
-    //values.preventDefault();
     onAdd(values);
-    console.log("add ", onAdd);
     toggle();
   };
 
@@ -79,7 +80,6 @@ const AddStaff = ({ onAdd }) => {
                       type="date"
                       id="doB"
                       name="doB"
-                      placeholder="ngày sinh"
                       className="form-control"
                       validators={{
                         required,
@@ -91,6 +91,8 @@ const AddStaff = ({ onAdd }) => {
                       show="touched"
                       messages={{
                         required: "Hãy nhập năm sinh",
+                        maxNumber:"1"
+                        
                       }}
                     />
                   </Col>
@@ -105,9 +107,9 @@ const AddStaff = ({ onAdd }) => {
                       type="date"
                       id="startDate"
                       name="startDate"
-                      placeholder="Ngày vào công ty"
                       className="form-control"
-                   
+                      placeholder="DD/MM/YYYY"
+                      dateFormat="DD/MM/YYYY"
                       validators={{
                         required,
                       }}
@@ -117,7 +119,8 @@ const AddStaff = ({ onAdd }) => {
                       model=".startDate"
                       show="touched"
                       messages={{
-                        required: "Hãy nhập ngày vào công tý",
+                        required: "Hãy nhập ngày vào công ty",
+                      
                       }}
                     />
                   </Col>
@@ -142,7 +145,6 @@ const AddStaff = ({ onAdd }) => {
                       <option value="IT">IT</option>
                       <option value="Finance">Finance</option>
                     </Control.select>
-                 
                     <Errors
                       className="text-danger"
                       model=".department"
@@ -168,8 +170,8 @@ const AddStaff = ({ onAdd }) => {
                       validators={{
                         required,
                         isNumber,
-                        minLength: minLength(1),
-                        maxLength: maxLength(3),
+                        minNumber: minNumber(1),
+                        maxNumber: maxNumber(3)
                       }}
                     />
                     <Errors
@@ -178,8 +180,8 @@ const AddStaff = ({ onAdd }) => {
                       show="touched"
                       messages={{
                         isNumber: "Hệ số lương không hợp lệ ",
-                        minLength: "Hệ số lương phải trên 1 ",
-                        maxLength: "Hệ số lương phải dưới 3",
+                        minNumber: "Hệ số lương phải trên 1 ",
+                        maxNumber: "Hệ số lương phải dưới 3",
                       }}
                     />
                   </Col>
@@ -198,8 +200,6 @@ const AddStaff = ({ onAdd }) => {
                       validators={{
                         required,
                         isNumber,
-                        minLength: minLength(1),
-                        maxLength: maxLength(3),
                       }}
                     />
                     <Errors
@@ -207,8 +207,7 @@ const AddStaff = ({ onAdd }) => {
                       model=".overTime"
                       show="touched"
                       messages={{
-                        isNumber: "Số ngày tăng ca không hợp lệ ",
-                        maxLength: "Số ngày tăng ca phải dưới 30",
+                        isNumber: "Số ngày làm thêm không hợp lệ ",
                       }}
                     />
                   </Col>
@@ -227,8 +226,6 @@ const AddStaff = ({ onAdd }) => {
                       validators={{
                         required,
                         isNumber,
-                        minLength: minLength(1),
-                        maxLength: maxLength(3),
                       }}
                     />
                     <Errors
@@ -236,8 +233,7 @@ const AddStaff = ({ onAdd }) => {
                       model=".annualLeave"
                       show="touched"
                       messages={{
-                        isNumber: "Số ngày nghỉ không hợp lệ",
-                        maxLength: " Số ngày nghỉ phải dưới 30",
+                        isNumber: "Số ngày nghỉ không hợp lệ",      
                       }}
                     />
                   </Col>

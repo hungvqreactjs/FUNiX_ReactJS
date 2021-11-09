@@ -9,17 +9,13 @@ import Layout from "./layout/Layout";
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  console.log("state",state)
   return {
     staff: state.staff,
     department: state.department
-  
   }
 }
 
 function App(reduxstate) {
-  
-  console.log("state staff",reduxstate.staff)
   return (
    
     <Layout>
