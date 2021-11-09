@@ -1,5 +1,4 @@
 import React from "react";
-import { DEPARTMENTS } from "../data/staffs";
 import { Link } from "react-router-dom";
 
 import {
@@ -10,7 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 
-const Departments = () => {
+const Departments = ({props}) => {
   return (
     <div className="container">
     <div className="row">
@@ -25,7 +24,7 @@ const Departments = () => {
         </Breadcrumb>
         <hr />
       </div>
-      {DEPARTMENTS.map((department, index) => {
+      {props.map((department, index) => {
         return (
           <div className="col-lg-4 col-sm-6 col-12" key={index}>
             <Card onClick={department.id} style={{backgroundImage: `url(/assets/images/logo1.png)`}}>

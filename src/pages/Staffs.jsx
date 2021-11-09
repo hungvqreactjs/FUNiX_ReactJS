@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
-import { STAFFS } from "../data/staffs";
 import Staff from "../components/Staff";
 import InputSearch from "../components/InputSearch"
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import AddStaff from "../components/AddStaff";
 
-const Staffs = () => {
+const Staffs = ({props}) => {
+console.log("props",props)
   const inputRef = useRef(null);
   const [searchKey, setSearchKey] = useState("");
-  const [listStaff, setListStaff] = useState(STAFFS);
+  const [listStaff, setListStaff] = useState(props);
 
   const submitHandler = (e) => {
     e.preventDefault();

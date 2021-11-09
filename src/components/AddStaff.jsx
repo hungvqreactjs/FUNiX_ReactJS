@@ -31,7 +31,7 @@ const AddStaff = ({ onAdd }) => {
   return (
     <div>
       <Button onClick={toggle} className="add-staff">
-        <i class="fa fa-user-plus fa-sm"></i>
+        <i className="fa fa-user-plus fa-sm"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle} size="lg">
         <LocalForm onSubmit={(values) => onSubmit(values)}>

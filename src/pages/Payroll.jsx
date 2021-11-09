@@ -1,5 +1,4 @@
 import React from "react";
-import { STAFFS } from "../data/staffs";
 import { Link } from "react-router-dom";
 
 import {
@@ -10,8 +9,8 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 
-const Payroll = () => {
-  const listSalary = STAFFS.map((obj) => ({
+const Payroll = ({props}) => {
+  const listSalary = props.map((obj) => ({
     ...obj,
     salary: 2000 * obj.salaryScale + obj.overTime * 100,
   }));
