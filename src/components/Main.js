@@ -1,14 +1,23 @@
 import React from "react";
 import Home from "./Home";
 import Staffs from "./Staff";
-import { STAFFS, DEPARTMENTS } from "../shared/staffs";
 import Departments from "./Departments";
 import Payroll from "./Payroll";
 import Header from "./Header";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import InfoStaff from "./InfoStaff";
+import { connect } from 'react-redux';
 
-function Main() {
+
+const mapStateToProps = state => {
+  return {
+    staff: state.staff,
+    department: state.department,
+  }
+}
+
+
+function Main(props) {
   const HomePage = () =>{
     return(
       <Home/>
@@ -19,14 +28,15 @@ function Main() {
       <Header />
       <Switch>
         <Route path="/trang-chu" component={HomePage} />
-        <Route exact path="/nhan-vien" component={() => <Staffs props={STAFFS} />} />
+        <Route exact path="/nhan-vien" component={() => <Staffs props={props.staff} />} />
         <Route path="/nhan-vien/:id" component={InfoStaff} /> 
-        <Route exact path="/phong-ban" component={() => <Departments props={DEPARTMENTS} />} />
-        <Route exact path="/bang-luong" component={() => <Payroll props={STAFFS} />} />
+        <Route exact path="/phong-ban" component={() => <Departments props={props.department} />} />
+        <Route exact path="/bang-luong" component={() => <Payroll props={props.staff} />} />
         <Redirect to="/trang-chu"/>
       </Switch>
     </div>
   );
 }
 
-export default Main;
+
+export default withRouter(connect(mapStateToProps)(Main));
