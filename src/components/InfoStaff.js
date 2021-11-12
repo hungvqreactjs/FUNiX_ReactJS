@@ -16,10 +16,10 @@ const InfoStaff = () => {
   let match = useRouteMatch();
 
   var staff = STAFFS.filter((staff) => {
-    return staff.id == match.params.id;
+    return staff.id === Number(match.params.id);
   });
   staff = staff[0];
-console.log(staff)
+
   return (
     <div className="container">
       <div className="row">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Home from "./Home";
 import Staffs from "./Staff";
 import Departments from "./Departments";
@@ -7,6 +7,7 @@ import Header from "./Header";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import InfoStaff from "./InfoStaff";
 import { connect } from 'react-redux';
+import { fetchStaff } from '../redux/ActionCreators';
 
 
 const mapStateToProps = state => {
@@ -16,8 +17,17 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+
+  fetchStaff: () => { dispatch(fetchStaff())}
+})
 
 function Main(props) {
+
+  useEffect(() => {
+    props.fetchStaff();
+  },[]);
+
   const HomePage = () =>{
     return(
       <Home/>
@@ -28,15 +38,14 @@ function Main(props) {
       <Header />
       <Switch>
         <Route path="/trang-chu" component={HomePage} />
-        <Route exact path="/nhan-vien" component={() => <Staffs props={props.staff} />} />
+        <Route exact path="/nhan-vien" component={() => <Staffs props={props.staff.staffs} />} />
         <Route path="/nhan-vien/:id" component={InfoStaff} /> 
         <Route exact path="/phong-ban" component={() => <Departments props={props.department} />} />
-        <Route exact path="/bang-luong" component={() => <Payroll props={props.staff} />} />
+        <Route exact path="/bang-luong" component={() => <Payroll props={props.staff.staffs} />} />
         <Redirect to="/trang-chu"/>
       </Switch>
     </div>
   );
 }
 
-
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

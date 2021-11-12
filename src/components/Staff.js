@@ -20,7 +20,6 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
- 
   const listStaffs = props.map((staff) => {
       return (
         <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
