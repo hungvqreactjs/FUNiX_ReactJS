@@ -25,9 +25,6 @@ const InfoStaff = () => {
       <div className="row">
         <Breadcrumb className="nav-router">
           <BreadcrumbItem>
-            <Link to="/trang-chu">Trang chủ</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
             <Link to="/nhan-vien">Nhân Viên</Link>
           </BreadcrumbItem>
           <BreadcrumbItem active>{staff.name}</BreadcrumbItem>

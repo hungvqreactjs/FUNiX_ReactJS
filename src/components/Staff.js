@@ -11,7 +11,6 @@ import { baseUrl } from '../shared/baseUrl';
 
 const Staff = ({ staff, onClick }) => {
 
-  console.log(staff)
   return (
     <Card onClick={onClick}>
       <Link to={`/nhan-vien/${staff.id}`}>
@@ -23,6 +22,9 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
+
+  console.log("staffs",props)
+  
   const listStaffs = props.map((staff) => {
       return (
         <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
@@ -36,9 +38,6 @@ const Staffs = ({ props }) => {
       <div className="row nav-menu">
         <div className="col-4">
           <Breadcrumb className="nav-router">
-            <BreadcrumbItem>
-              <Link to="/trang-chu">Trang chủ</Link>
-            </BreadcrumbItem>
             <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
           </Breadcrumb>
         </div>

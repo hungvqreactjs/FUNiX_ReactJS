@@ -23,9 +23,6 @@ const Departments =({props}) => {
          <div className="container">
          <div className="row">
            <Breadcrumb className="nav-router">
-             <BreadcrumbItem>
-               <Link to="/trang-chu">Trang chủ</Link>
-             </BreadcrumbItem>
              <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
            </Breadcrumb>
            <hr />

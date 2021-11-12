@@ -22,9 +22,6 @@ const Header = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-          <NavItem>
-              <NavLink to="/trang-chu" className="textnav"><i className="fa fa-home fa-lg"></i> Trang chủ</NavLink>
-            </NavItem>
             <NavItem>
               <NavLink to="/nhan-vien" className="textnav"><i className="fa fa-user fa-lg"></i> Nhân Viên</NavLink>
             </NavItem>

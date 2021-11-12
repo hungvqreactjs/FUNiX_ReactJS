@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import Home from "./Home";
 import Staffs from "./Staff";
 import Departments from "./Departments";
 import Payroll from "./Payroll";
@@ -28,16 +27,11 @@ function Main(props) {
     props.fetchStaff();
   },[]);
 
-  const HomePage = () =>{
-    return(
-      <Home/>
-    )
-  }
+
   return (
     <div>
       <Header />
       <Switch>
-        <Route path="/trang-chu" component={HomePage} />
         <Route exact path="/nhan-vien" component={() => <Staffs props={props.staff.staffs} />} />
         <Route path="/nhan-vien/:id" component={InfoStaff} /> 
         <Route exact path="/phong-ban" component={() => <Departments props={props.department} />} />
@@ -47,5 +41,6 @@ function Main(props) {
     </div>
   );
 }
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

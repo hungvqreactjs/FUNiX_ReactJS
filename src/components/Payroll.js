@@ -6,7 +6,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+
 const Payroll = ({ props }) => {
 
   const listSalary = props.map((obj) => ({
@@ -34,9 +34,6 @@ const Payroll = ({ props }) => {
       <div className="row nav-menu">
         <div className="col-4">
           <Breadcrumb className="nav-router">
-            <BreadcrumbItem>
-              <Link to="/trang-chu">Trang chủ</Link>
-            </BreadcrumbItem>
             <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
           </Breadcrumb>
         </div>
