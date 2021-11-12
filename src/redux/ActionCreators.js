@@ -1,13 +1,13 @@
 import * as ActionTypes from './ActionTypes'
-import { STAFFS } from "../shared/staffs";
+import { baseUrl } from '../shared/baseUrl';
 
 
 export const  fetchStaff = () => (dispatch) => {
     dispatch(staffsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addStaffs(STAFFS));
-    }, 2000);
+    return fetch(baseUrl + 'staffs')
+    .then(response => response.json())
+    .then(staffs => dispatch(addStaffs( staffs)));
 }
 
 export const staffsLoading = () => ({
