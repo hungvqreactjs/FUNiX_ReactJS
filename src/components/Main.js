@@ -6,7 +6,7 @@ import Header from "./Header";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import InfoStaff from "./InfoStaff";
 import { connect } from "react-redux";
-import { fetchStaff } from "../redux/ActionCreators";
+import { fetchStaff, fetchDepartment } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => {
   return {
@@ -19,12 +19,18 @@ const mapDispatchToProps = (dispatch) => ({
   fetchStaff: () => {
     dispatch(fetchStaff());
   },
+  fetchDepartment: () => {
+    dispatch(fetchDepartment());
+  },
 });
 
 function Main(props) {
   useEffect(() => {
     props.fetchStaff();
+    props.fetchDepartment();
   }, []);
+
+  console.log("propsde", props);
 
   return (
     <div>
@@ -48,7 +54,13 @@ function Main(props) {
         <Route
           exact
           path="/phong-ban"
-          component={() => <Departments props={props.department} />}
+          component={() => (
+            <Departments
+              props={props.department.departments}
+              isLoading={props.department.isLoading}
+              ErrMess={props.department.errMess}
+            />
+          )}
         />
         <Route
           exact

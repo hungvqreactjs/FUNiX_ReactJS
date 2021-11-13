@@ -10,38 +10,16 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
-import { Loading } from './Loading'
 
 const InfoStaff = ({ props }) => {
   let { id } = useParams();
-
   var staff = props.filter((staff) => {
     return staff.id === Number(id);
   });
   staff = staff[0];
 
-  console.log('staffunfo',props.staff)
-  console.log('staff2',staff)
-
-  if (props.isLoading) {
-    return(
-        <div className="container">
-            <div className="row">            
-                <Loading />
-            </div>
-        </div>
-    );
-}
-else if (props.errMess) {
-    return(
-        <div className="container">
-            <div className="row">            
-                <h4>{props.errMess}</h4>
-            </div>
-        </div>
-    );
-}
-else if (staff != null) {
+  
+ if (staff != null) {
 
   return (
     <div className="container">
@@ -68,7 +46,7 @@ else if (staff != null) {
           </div>
           <CardBody className="col-lg-9 col-sm-8 col-12">
             <CardTitle className="card-title-info">{staff.name}</CardTitle>
-            <CardText>Phòng ban: </CardText>
+            <CardText>Phòng ban:  </CardText>
             <CardText>
               Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}
             </CardText>

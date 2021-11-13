@@ -6,18 +6,42 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
+import { Loading, Error} from './Loading&Error'
 
-const Departments =({props}) => {
+const Departments =({props, isLoading, ErrMess}) => {
   const departments =  props.map((department) => {
+
     return (
       <div className="col-lg-4 col-sm-6 col-12" key={department.id}>
-        <Card onClick={department.id}>
+        <Card onClick={() => (department.id)}>
           <CardTitle>{department.name}</CardTitle>
           <CardText>Số nhân viên: {department.numberOfStaff}</CardText>
         </Card>
       </div>
     );
   });
+
+  if (isLoading) {
+    return(
+        <div className="container">
+            <div className="row">            
+                <Loading />
+            </div>
+        </div>
+    );
+}
+else if (ErrMess) {
+    return(
+        <div className="container">
+            <div className="row"> 
+                <div className="col-12">
+                <Error/>
+                </div>
+            </div>
+        </div>
+    );
+}
+else{
   return(
          <div className="container">
          <div className="row">
@@ -30,6 +54,6 @@ const Departments =({props}) => {
        </div>
   )
 }
-
+}
 
 export default Departments;

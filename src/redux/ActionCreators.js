@@ -23,3 +23,25 @@ export const addStaffs = (staffs) => ({
     type: ActionTypes.ADD_STAFFS,
     payload: staffs
 });
+
+export const  fetchDepartment = () => (dispatch) => {
+    dispatch(departmentsLoading(true));
+
+    return fetch(baseUrl + 'departments')
+    .then(response => response.json())
+    .then(departments => dispatch(addDepartments( departments)));
+}
+
+export const departmentsLoading = () => ({
+    type: ActionTypes.DEPARTMENTS_LOADING
+});
+
+export const departmentsFailed = (errmess) => ({
+    type: ActionTypes.DEPARTMENTS_FAILED,
+    payload: errmess
+});
+
+export const addDepartments = (departments) => ({
+    type: ActionTypes.ADD_DEPARTMENTS,
+    payload: departments
+});

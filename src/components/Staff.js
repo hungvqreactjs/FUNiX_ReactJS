@@ -7,6 +7,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Loading, Error } from './Loading&Error'
 
 const Staff = ({ staff, onClick }) => {
 
@@ -20,8 +21,8 @@ const Staff = ({ staff, onClick }) => {
   );
 };
 
-const Staffs = ({ props }) => {
-  
+const Staffs = ({ props, isLoading, ErrMess}) => {
+  console.log("eroor",ErrMess)
   const listStaffs = props.map((staff) => {
       return (
         <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
@@ -29,7 +30,27 @@ const Staffs = ({ props }) => {
         </div>
       );
     });
-
+    if (isLoading) {
+      return(
+          <div className="container">
+              <div className="row">            
+                  <Loading />
+              </div>
+          </div>
+      );
+  }
+  else if (ErrMess) {
+      return(
+          <div className="container">
+              <div className="row"> 
+                  <div className="col-12">
+                  <Error/>
+                  </div>
+              </div>
+          </div>
+      );
+  }
+  else{
   return (
     <div className="container">
       <div className="row nav-menu">
@@ -43,7 +64,7 @@ const Staffs = ({ props }) => {
       </div>
       <div className="row">{listStaffs}</div> 
     </div>
-  );
+  )};
 };
 
 export default Staffs;
