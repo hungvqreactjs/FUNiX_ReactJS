@@ -3,8 +3,9 @@ import Staffs from "./Staff";
 import Departments from "./Departments";
 import Payroll from "./Payroll";
 import Header from "./Header";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import InfoStaff from "./InfoStaff";
+import ListStaffDepartment from "./ListStaffDepartment";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchStaff, fetchDepartment } from "../redux/ActionCreators";
 
@@ -30,8 +31,6 @@ function Main(props) {
     props.fetchDepartment();
   }, []);
 
-  console.log("propsde", props);
-
   return (
     <div>
       <Header />
@@ -49,7 +48,7 @@ function Main(props) {
         />
         <Route
           path="/nhan-vien/:id"
-          children={<InfoStaff props={[...props.staff.staffs]} />}
+          children={<InfoStaff props={[...props.staff.staffs]} department={[...props.department.departments]} />}
         />
         <Route
           exact
@@ -61,6 +60,10 @@ function Main(props) {
               ErrMess={props.department.errMess}
             />
           )}
+        />
+        <Route
+          path="/phong-ban/:id"
+          children={<ListStaffDepartment props={[...props.staff.staffs]} department={[...props.department.departments]} />}
         />
         <Route
           exact

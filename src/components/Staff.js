@@ -6,13 +6,12 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Loading, Error } from './Loading&Error'
 
-const Staff = ({ staff, onClick }) => {
-
+const Staff = ({ staff }) => {
   return (
-    <Card onClick={onClick}>
+    <Card>
       <Link to={`/nhan-vien/${staff.id}`}>
         <CardImg width="100%" src={staff.image} alt={staff.name} />
         <CardTitle>{staff.name}</CardTitle>
@@ -22,7 +21,7 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props, isLoading, ErrMess}) => {
-  console.log("eroor",ErrMess)
+  let location = useLocation();
   const listStaffs = props.map((staff) => {
       return (
         <div className="col-6 col-sm-4 col-lg-2" key={staff.id}>
@@ -53,7 +52,7 @@ const Staffs = ({ props, isLoading, ErrMess}) => {
   else{
   return (
     <div className="container">
-      <div className="row nav-menu">
+      {location.pathname === "/nhan-vien" ? <div className="row nav-menu">
         <div className="col-4">
           <Breadcrumb className="nav-router">
             <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
@@ -61,7 +60,7 @@ const Staffs = ({ props, isLoading, ErrMess}) => {
         </div>
 
         <hr />
-      </div>
+      </div> : ""}
       <div className="row">{listStaffs}</div> 
     </div>
   )};
