@@ -1,13 +1,14 @@
 .navbar {
   background-color: brown !important;
-  padding: 0 30px;
+  padding: 0 35px;
   line-height: 45px;
   justify-content: space-between;
 }
 .textnav {
   color: #fff;
-  margin: 0 6px;
+  margin: 0 12px;
   font-weight: bold;
+  text-transform: uppercase;
  
 }
 

@@ -7,14 +7,13 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { baseUrl } from '../shared/baseUrl';
 
 const Staff = ({ staff, onClick }) => {
 
   return (
     <Card onClick={onClick}>
       <Link to={`/nhan-vien/${staff.id}`}>
-        <CardImg width="100%" src={baseUrl + staff.image} alt={staff.name} />
+        <CardImg width="100%" src={staff.image} alt={staff.name} />
         <CardTitle>{staff.name}</CardTitle>
       </Link>
     </Card>
@@ -22,8 +21,6 @@ const Staff = ({ staff, onClick }) => {
 };
 
 const Staffs = ({ props }) => {
-
-  console.log("staffs",props)
   
   const listStaffs = props.map((staff) => {
       return (

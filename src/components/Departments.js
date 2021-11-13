@@ -6,7 +6,6 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
 const Departments =({props}) => {
   const departments =  props.map((department) => {
