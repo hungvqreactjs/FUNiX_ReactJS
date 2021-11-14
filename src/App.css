@@ -1,8 +1,9 @@
 .navbar {
-  background-color: brown !important;
+  background-image: url(./anhnencard.jpg);
   padding: 0 35px;
   line-height: 45px;
   justify-content: space-between;
+
 }
 .textnav {
   color: #fff;
@@ -12,6 +13,9 @@
  
 }
 
+.textnav:hover{
+  color: red;
+}
 .nav-router {
   margin-top: 20px;
 }
@@ -42,33 +46,25 @@
 .card-text{
   line-height: 24px;
   padding-left: 50px;
+  color:#fff ;
 }
 .img-info{
   padding: 6px;
 }
 .card{
-  background-image: url(./logo1.png);
+  background-image: url(./anhnencard.jpg);
   color:#fff;
   margin-bottom: 10px;
-
 opacity: 0.85;
+background-repeat: no-repeat ;
+background-size: cover;
+
 }
 
 .card-payroll{
   padding: 10px 
 }
 
-
-.home{
-  background-image: url("./anhnen.png");
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
 .input-group-text{
   height: 40px;
 }
@@ -81,6 +77,29 @@ a{
 font-weight: bold;
 font-size: 18px;
 }
+
+.page-enter {
+  opacity: 0.01;
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 0.1;
+  transform: translateX(0%);
+  transition: all 300ms ease-in;
+}
+
+.page-exit {
+  opacity: 0.8;
+  transform: translateX(0%);
+}
+
+.page-exit-active {
+  opacity: 0.01;
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}
+
 
 @media (max-width: 1300px) {
   .card-text{
@@ -102,11 +121,11 @@ font-size: 18px;
 }
 @media (max-width: 767px) {
 
-  .home{
-    background-image: url("./anhnen2.png");
+  .container-fluid{
+    color: #fff !important;
     
   }
-  
+
   .navbarlogo {
     display: none;
   }

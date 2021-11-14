@@ -7,11 +7,16 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Loading, Error } from './Loading&Error'
+import { Fade, Stagger } from 'react-animation-components';
 
 const StaffsSalary = ({ props, isLoading, ErrMess }) => {
-  const payRoll = props.map((payroll) => {
+
+  const payRoll =  props.map((payroll) => {
     return (
+      
       <div className="col-lg-4 col-sm-6 col-12 " key={payroll.id}>
+        <Stagger in>
+        <Fade in>
         <Card className="card-payroll">
           <CardTitle>{payroll.name}</CardTitle>
           <CardText>Mã Nhân Viên: {payroll.id}</CardText>
@@ -19,10 +24,14 @@ const StaffsSalary = ({ props, isLoading, ErrMess }) => {
           <CardText>Số ngày làm thêm {payroll.overTime}</CardText>
           <CardTitle>Lương: {payroll.salary}</CardTitle>
         </Card>
+        </Fade>
+        </Stagger>
       </div>
+     
     );
-  });
-console.log('loading',isLoading)
+  })
+  
+
   if (isLoading) {
     return (
       <div className="container">

@@ -7,13 +7,18 @@ import InfoStaff from "./InfoStaff";
 import ListStaffDepartment from "./ListStaffDepartment";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchStaff, fetchDepartment, fetchStaffSalary } from "../redux/ActionCreators";
+import {
+  fetchStaff,
+  fetchDepartment,
+  fetchStaffSalary,
+} from "../redux/ActionCreators";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const mapStateToProps = (state) => {
   return {
     staff: state.staff,
     department: state.department,
-    staffSalary : state.staffSalary
+    staffSalary: state.staffSalary,
   };
 };
 
@@ -39,45 +44,68 @@ function Main(props) {
   return (
     <div>
       <Header />
-      <Switch>
-        <Route
-          exact
-          path="/nhan-vien"
-          component={() => (
-            <Staffs
-              props={props.staff.staffs}
-              isLoading={props.staff.isLoading}
-              ErrMess={props.staff.errMess}
+      <TransitionGroup>
+        <CSSTransition
+          key={props.location.key}
+          classNames="page"
+          timeout={300}
+        >
+          <Switch location={props.location}>
+            <Route
+              exact
+              path="/nhan-vien"
+              component={() => (
+                <Staffs
+                  props={props.staff.staffs}
+                  isLoading={props.staff.isLoading}
+                  ErrMess={props.staff.errMess}
+                />
+              )}
             />
-          )}
-        />
-        <Route
-          path="/nhan-vien/:id"
-          children={<InfoStaff props={[...props.staff.staffs]} department={[...props.department.departments]} />}
-        />
-        <Route
-          exact
-          path="/phong-ban"
-          component={() => (
-            <Departments
-              props={props.department.departments}
-              isLoading={props.department.isLoading}
-              ErrMess={props.department.errMess}
+            <Route
+              path="/nhan-vien/:id"
+              children={
+                <InfoStaff
+                  props={[...props.staff.staffs]}
+                  department={[...props.department.departments]}
+                />
+              }
             />
-          )}
-        />
-        <Route
-          path="/phong-ban/:id"
-          children={<ListStaffDepartment props={[...props.staff.staffs]} department={[...props.department.departments]} />}
-        />
-        <Route
-          exact
-          path="/bang-luong"
-          component={() => <StaffsSalary props={props.staffSalary.staffSalary}    isLoading={props.staffSalary.isLoading}
-          ErrMess={props.staffSalary.errMess} />}
-        />
-        <Redirect to="/nhan-vien" />
-      </Switch>
+            <Route
+              exact
+              path="/phong-ban"
+              component={() => (
+                <Departments
+                  props={props.department.departments}
+                  isLoading={props.department.isLoading}
+                  ErrMess={props.department.errMess}
+                />
+              )}
+            />
+            <Route
+              path="/phong-ban/:id"
+              children={
+                <ListStaffDepartment
+                  props={[...props.staff.staffs]}
+                  department={[...props.department.departments]}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/bang-luong"
+              component={() => (
+                <StaffsSalary
+                  props={props.staffSalary.staffSalary}
+                  isLoading={props.staffSalary.isLoading}
+                  ErrMess={props.staffSalary.errMess}
+                />
+              )}
+            />
+            <Redirect to="/nhan-vien" />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 }

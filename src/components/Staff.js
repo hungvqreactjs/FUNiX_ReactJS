@@ -8,15 +8,22 @@ import {
 } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import { Loading, Error } from './Loading&Error'
+import { FadeTransform } from 'react-animation-components';
 
 const Staff = ({ staff }) => {
+  
   return (
+    <FadeTransform in
+    transformProps={{
+        exitTransform: 'scale(0.5) translateY(-70%)'
+    }}>
     <Card>
       <Link to={`/nhan-vien/${staff.id}`}>
         <CardImg width="100%" src={staff.image} alt={staff.name} />
         <CardTitle>{staff.name}</CardTitle>
       </Link>
     </Card>
+    </FadeTransform>
   );
 };
 

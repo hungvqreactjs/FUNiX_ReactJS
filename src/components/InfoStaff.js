@@ -27,6 +27,7 @@ const InfoStaff = ({ props, department }) => {
 
   return (
     <div className="container">
+    
       {staff && (
         <>
           <div className="row">
@@ -38,7 +39,6 @@ const InfoStaff = ({ props, department }) => {
             </Breadcrumb>
             <hr />
           </div>
-
           <Card className="card-info">
             <div className="row">
               <div className="col-lg-3 col-sm-4 col-12">
@@ -48,7 +48,7 @@ const InfoStaff = ({ props, department }) => {
                   src={staff.image}
                   alt={staff.name}
                 />
-              </div>
+              </div>        
               <CardBody className="col-lg-9 col-sm-8 col-12">
                 <CardTitle className="card-title-info">{staff.name}</CardTitle>
                 <CardText>Phòng ban: {findDE}</CardText>
@@ -66,6 +66,7 @@ const InfoStaff = ({ props, department }) => {
         </>
       )}
     </div>
+    
   );
 };
 
