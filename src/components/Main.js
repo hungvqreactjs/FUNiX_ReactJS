@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import Staffs from "./Staff";
 import Departments from "./Departments";
-import Payroll from "./Payroll";
+import StaffsSalary from "./StaffsSalary";
 import Header from "./Header";
 import InfoStaff from "./InfoStaff";
 import ListStaffDepartment from "./ListStaffDepartment";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchStaff, fetchDepartment } from "../redux/ActionCreators";
+import { fetchStaff, fetchDepartment, fetchStaffSalary } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => {
   return {
     staff: state.staff,
     department: state.department,
+    staffSalary : state.staffSalary
   };
 };
 
@@ -23,12 +24,16 @@ const mapDispatchToProps = (dispatch) => ({
   fetchDepartment: () => {
     dispatch(fetchDepartment());
   },
+  fetchStaffSalary: () => {
+    dispatch(fetchStaffSalary());
+  },
 });
 
 function Main(props) {
   useEffect(() => {
     props.fetchStaff();
     props.fetchDepartment();
+    props.fetchStaffSalary();
   }, []);
 
   return (
@@ -68,7 +73,8 @@ function Main(props) {
         <Route
           exact
           path="/bang-luong"
-          component={() => <Payroll props={props.staff.staffs} />}
+          component={() => <StaffsSalary props={props.staffSalary.staffSalary}    isLoading={props.staffSalary.isLoading}
+          ErrMess={props.staffSalary.errMess} />}
         />
         <Redirect to="/nhan-vien" />
       </Switch>
