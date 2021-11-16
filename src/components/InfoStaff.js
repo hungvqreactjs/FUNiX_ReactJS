@@ -11,11 +11,10 @@ import {
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 
-const InfoStaff = ({ props, department }) => {
+const InfoStaff = ({ props}) => {
   let { id } = useParams();
 
   var staff = null;
-  var findDE = null;
 
   if (props.length > 0) {
     staff = props.filter((staff) => {

@@ -8,6 +8,10 @@ import {
 } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import { Loading, Error } from './Loading&Error'
+import NewStaff from "./NewStaff";
+import { baseUrl } from "../shared/baseUrl";
+import { addStaffs } from "../redux/ActionCreators";
+
 
 
 const Staff = ({ staff }) => {
@@ -31,6 +35,44 @@ const Staffs = ({ props, isLoading, ErrMess}) => {
         </div>
       );
     });
+
+    const AddPerson = (staff, dispatch) => {
+     console.log("add",staff)
+
+     fetch(baseUrl + 'staffs', {
+
+      method: 'POST',
+      
+      body: JSON.stringify(staff),
+      
+      headers: {
+      
+      'Content-Type': 'application/json'
+      
+      },
+      
+      credentials: 'same-origin'
+      
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(response => dispatch(addStaffs(response)))
+    .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
+;
+    
+    };
+  
     if (isLoading) {
       return(
           <div className="container">
@@ -60,7 +102,10 @@ const Staffs = ({ props, isLoading, ErrMess}) => {
             <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
           </Breadcrumb>
         </div>
-
+        <div className="nav-function col-3">
+        <NewStaff onAdd={AddPerson} />
+   
+        </div>
         <hr />
       </div> : ""}
       <div className="row">{listStaffs}</div> 

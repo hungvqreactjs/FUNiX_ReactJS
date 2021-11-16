@@ -4,14 +4,14 @@ import Header from "./Header";
 import InfoStaff from "./InfoStaff";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchStaff } from "../redux/ActionCreators";
+import { fetchStaff} from "../redux/ActionCreators";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+
 const mapStateToProps = (state) => {
+  
   return {
     staff: state.staff,
-    department: state.department,
-    staffSalary: state.staffSalary,
   };
 };
 
@@ -19,12 +19,14 @@ const mapDispatchToProps = (dispatch) => ({
   fetchStaff: () => {
     dispatch(fetchStaff());
   },
+ 
 });
 
 function Main(props) {
   useEffect(() => {
     props.fetchStaff();
   }, []);
+
 
   return (
     <div>
@@ -40,6 +42,7 @@ function Main(props) {
                   props={props.staff.staffs}
                   isLoading={props.staff.isLoading}
                   ErrMess={props.staff.errMess}
+                  NewStaffForm={props.NewStaffForm} 
                 />
               )}
             />
