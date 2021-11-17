@@ -99,7 +99,13 @@ font-size: 18px;
   transform: translateX(100%);
   transition: all 300ms ease-out;
 }
+.delete{
+  position: absolute;
+  right: 3px;
+  top: 3px;
 
+
+}
 
 @media (max-width: 1300px) {
   .card-text{
