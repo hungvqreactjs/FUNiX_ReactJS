@@ -20,7 +20,7 @@ const minNumber = (len) => (val) => !val || val >= len;
 const maxNumber = (len) => (val) => val && val <= len;
 
 
-const NewStaff = ({onAdd}) => {
+const StaffForm = ({onAdd}) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -108,7 +108,7 @@ const NewStaff = ({onAdd}) => {
                       name="startDate"
                       className="form-control"
                       placeholder="DD/MM/YYYY"
-                      dateFormat="DD/MM/YYYY"
+                      //dateFormat="DD/MM/YYYY"
                       validators={{
                         required,
                       }}
@@ -252,4 +252,4 @@ const NewStaff = ({onAdd}) => {
   );
 };
 
-export default NewStaff;
+export default StaffForm;
