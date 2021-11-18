@@ -105,6 +105,12 @@ font-size: 18px;
   top: 3px;
 }
 
+.edit{
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}
+
 .modal-add{
   justify-content: center;
 }

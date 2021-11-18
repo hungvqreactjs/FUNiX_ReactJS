@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
 } from "reactstrap";
@@ -17,7 +16,7 @@ const Header = () => {
 
   return (
     <div  className="navbar">
-      <NavbarBrand className="navbarlogo"><Link to='/trang-chu'><i className="fa fa-home fa-lg"></i></Link></NavbarBrand>
+      <div className="navbarlogo"><Link to='/nhan-vien'><i className="fa fa-home fa-lg"></i></Link></div>
       <Navbar color="light" light expand="md" >
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

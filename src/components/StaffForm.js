@@ -32,7 +32,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
   return (
     <div>
       <Button onClick={toggle} className="add-staff">
-         {nameForm} Nhân Viên
+         {nameForm} Thêm nhân viên
       </Button>
       <Modal isOpen={modal} toggle={toggle} size="lg">
         <Form model="staffFrom" onSubmit={(values) => onSubmit(values)}>
@@ -126,13 +126,13 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
                 </FormGroup>
 
                 <FormGroup row>
-                  <Label htmlFor="department" md={4}>
+                  <Label htmlFor="departmentId" md={4}>
                     Phòng ban
                   </Label>
                   <Col md={8}>
                     <Control.select
-                      model=".department"
-                      name="department"
+                      model=".departmentId"
+                      name="departmentId"
                       className="form-control"
                       validators={{
                         required,
@@ -146,7 +146,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
                     </Control.select>
                     <Errors
                       className="text-danger"
-                      model=".department"
+                      model=".departmentId"
                       show="touched"
                       messages={{
                         required: "Hãy chọn phòng ban",
@@ -165,6 +165,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
                       id="salaryScale"
                       name="salaryScale"
                       placeholder="0"
+                      type="number"
                       className="form-control"
                       validators={{
                         required,
@@ -194,6 +195,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
                       model=".overTime"
                       id="overTime"
                       name="overTime"
+                      type="number"
                       placeholder="0"
                       className="form-control"
                       validators={{
@@ -220,6 +222,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
                       model=".annualLeave"
                       id="annualLeave"
                       name="annualLeave"
+                      type="number"
                       placeholder="0"
                       className="form-control"
                       validators={{

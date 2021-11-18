@@ -7,7 +7,7 @@ import {
   BreadcrumbItem,
   Button,
 } from "reactstrap";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Loading, Error } from "./Loading&Error";
 import StaffForm from "./StaffForm";
 import { baseUrl } from "../shared/baseUrl";
@@ -21,20 +21,42 @@ export const Staff = ({ staff, onDelete }) => {
         {" "}
         <i className="fa fa-trash"></i>
       </Button>
-      <Link to={`/nhan-vien/${staff.id}`}>
         <CardImg width="100%" src={staff.image} alt={staff.name} />
         <CardTitle>{staff.name}</CardTitle>
-      </Link>
     </Card>
   );
 };
 
-const Staffs = ({ props, isLoading, ErrMess }) => {
+const Staffs = ({ isLoading, ErrMess }) => {
 
   let location = useLocation();
-  const [listStaffs, setListStaffs] = useState(props);
+  const [listStaffs, setListStaffs] = useState([]);
 
-  
+  useEffect(() => {
+    let isCancelled = false;
+
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks()
+      if (!isCancelled) {
+        setListStaffs(tasksFromServer)
+      }
+    }
+
+    getTasks()
+    return () => {
+      isCancelled = true;
+    };
+
+  }, [])
+
+  // Fetch Tasks
+  const fetchTasks = async () => {
+    const res = await fetch(`${baseUrl}staffs`)
+    const data = await res.json()
+
+    return data
+  }
+
    const onDelete = async (id) => {
     const res = await fetch(`${baseUrl}staffs/${id}`, {
       method: 'DELETE',
@@ -55,10 +77,7 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
     })
     const data = await res.json()
       setListStaffs(data);
-    
   };
-
-
 
   if (isLoading) {
     return (
@@ -89,7 +108,7 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
               </Breadcrumb>
             </div>
             <div className="nav-function col-2">
-              <StaffForm onAdd={AddPerson} nameForm={<i class="fa fa-user-plus"></i>} nameButton="Thêm"/>
+              <StaffForm onAdd={AddPerson} nameForm={<i className="fa fa-user-plus"></i>} nameButton="Thêm"/>
             </div>
             <hr />
           </div>

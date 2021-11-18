@@ -1,7 +1,7 @@
 import React from "react";
 import { Staff } from "./Staff";
 
-const ListStaff = ({ listStaffs, onDelete }) => {
+const ListStaff = ({ listStaffs, onDelete}) => {
   return (
     <>
       {listStaffs.map((staff, index) => (
