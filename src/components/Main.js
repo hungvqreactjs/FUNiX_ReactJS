@@ -4,14 +4,14 @@ import Header from "./Header";
 import InfoStaff from "./InfoStaff";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchStaff} from "../redux/ActionCreators";
+import { fetchStaff,fetchDepartment} from "../redux/ActionCreators";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 
 const mapStateToProps = (state) => {
-  
   return {
     staff: state.staff,
+    department: state.department,
   };
 };
 
@@ -19,12 +19,17 @@ const mapDispatchToProps = (dispatch) => ({
   fetchStaff: () => {
     dispatch(fetchStaff());
   },
- 
+  fetchDepartment: () => {
+    dispatch(fetchDepartment());
+  },
 });
 
 function Main(props) {
+
+console.log("ok",props)
   useEffect(() => {
     props.fetchStaff();
+    props.fetchDepartment();
   }, []);
 
 
@@ -50,7 +55,8 @@ function Main(props) {
               path="/nhan-vien/:id"
               children={
                 <InfoStaff
-                  props={[...props.staff.staffs]}    
+                  props={[...props.staff.staffs]}   
+                  department={[...props.department.departments]}
                 />
               }
             />

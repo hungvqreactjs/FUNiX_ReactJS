@@ -1,5 +1,4 @@
-
- export const InitialNewStaff = {
+ export const InitialStaffForm = {
 
     id: "",
     name: "",

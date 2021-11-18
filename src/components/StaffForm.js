@@ -20,7 +20,7 @@ const minNumber = (len) => (val) => !val || val >= len;
 const maxNumber = (len) => (val) => val && val <= len;
 
 
-const StaffForm = ({onAdd}) => {
+const StaffForm = ({onAdd, nameForm, nameButton}) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -32,11 +32,11 @@ const StaffForm = ({onAdd}) => {
   return (
     <div>
       <Button onClick={toggle} className="add-staff">
-        <i className="fa fa-user-plus fa-sm"></i> Thêm nhân viên
+         {nameForm}
       </Button>
       <Modal isOpen={modal} toggle={toggle} size="lg">
-        <Form model="newstaff" onSubmit={(values) => onSubmit(values)}>
-          <ModalHeader>Thêm nhân viên</ModalHeader>
+        <Form model="staffFrom" onSubmit={(values) => onSubmit(values)}>
+          <ModalHeader>{nameButton} nhân viên</ModalHeader>
           <ModalBody>
             <div className="row modal-add">
               <div className="col-12 col-md-9">
@@ -242,7 +242,7 @@ const StaffForm = ({onAdd}) => {
           </ModalBody>
           <ModalFooter>
             <Button type="submit" color="primary">
-              Thêm
+              {nameButton}
             </Button>{" "}
             <Button onClick={toggle}>Hủy</Button>
           </ModalFooter>

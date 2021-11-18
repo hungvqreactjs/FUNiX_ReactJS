@@ -103,8 +103,17 @@ font-size: 18px;
   position: absolute;
   right: 3px;
   top: 3px;
+}
 
+.add-staff{
+  position: absolute ;
+  top: 10px;
+  right: 10px;
+  
+}
 
+.modal-add{
+  justify-content: center;
 }
 
 @media (max-width: 1300px) {

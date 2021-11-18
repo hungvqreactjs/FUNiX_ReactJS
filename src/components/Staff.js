@@ -34,15 +34,14 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
   let location = useLocation();
   const [listStaffs, setListStaffs] = useState(props);
 
-   // Delete Task
+  
    const onDelete = async (id) => {
     const res = await fetch(`${baseUrl}staffs/${id}`, {
       method: 'DELETE',
     })
-    //We should control the response status to decide if we will change the state or not.
     res.status === 200
-      ? setListStaffs(listStaffs.filter((task) => task.id !== id))
-      : alert('Error Deleting This Task')
+      ? setListStaffs(listStaffs.filter((staff) => staff.id !== id))
+      : alert('Đã xóa thành công không thế lặp lại thao tác')
   }
  
 
@@ -58,6 +57,9 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
     const data = await res.json()
     setListStaffs(data);
   };
+
+  
+
 
   if (isLoading) {
     return (
@@ -88,7 +90,7 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
               </Breadcrumb>
             </div>
             <div className="nav-function col-2">
-              <StaffForm onAdd={AddPerson} />
+              <StaffForm onAdd={AddPerson} nameForm={<i class="fa fa-user-plus"></i>} nameButton="Thêm"/>
             </div>
             <hr />
           </div>
