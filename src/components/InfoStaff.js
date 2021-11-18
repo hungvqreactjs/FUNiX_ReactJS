@@ -62,7 +62,6 @@ const InfoStaff = ({ props, department}) => {
             <hr />
           </div>
           <Card className="card-info">
-          <StaffForm className="edit-from" nameButton="Sửa" nameForm={<i className="fa fa-edit"></i>} onAdd={() => onEdit()} />
             <div className="row">
               <div className="col-lg-3 col-sm-4 col-12">
                 <CardImg

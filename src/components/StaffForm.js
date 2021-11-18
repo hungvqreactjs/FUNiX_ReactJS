@@ -32,7 +32,7 @@ const StaffForm = ({onAdd, nameForm, nameButton}) => {
   return (
     <div>
       <Button onClick={toggle} className="add-staff">
-         {nameForm}
+         {nameForm} Nhân Viên
       </Button>
       <Modal isOpen={modal} toggle={toggle} size="lg">
         <Form model="staffFrom" onSubmit={(values) => onSubmit(values)}>

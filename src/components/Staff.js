@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardImg,
@@ -53,12 +53,11 @@ const Staffs = ({ props, isLoading, ErrMess }) => {
       },
       body: JSON.stringify(staff),
     })
-
     const data = await res.json()
-    setListStaffs(data);
+      setListStaffs(data);
+    
   };
 
-  
 
 
   if (isLoading) {
