@@ -1,21 +1,14 @@
-import React, { Component } from 'react'
+import React from "react";
+import Main from "./components/MainComponent";
 import "./App.css";
-import Menu from "./components/MenuComponent";
-import { DISHES } from "./shared/dishes";
+import { BrowserRouter } from "react-router-dom";
 
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dishes: DISHES,
-    };
-  }
-  render() {
-    return(
-      <Menu dishes={this.state.dishes} />
-    ) 
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
+  );
 }
 
 export default App;
