@@ -7,12 +7,19 @@ import Home from "./HomeComponent";
 import { useRouteMatch, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
+import Contact from './ContactComponent';
+import { COMMENTS } from '../shared/comments';
+import { PROMOTIONS } from '../shared/promotions';
+import { LEADERS } from '../shared/leaders';
 
-function Main() {
-  let match = useRouteMatch();
+function Main(props) {
+ 
+  console.log("ok",props)
 
   const HomePage = () => {
-    return <Home />;
+    return <Home   dish={DISHES.filter((dish) => dish.featured)[0]}
+    promotion={PROMOTIONS.filter((promo) => promo.featured)[0]}
+    leader={LEADERS.filter((leader) => leader.featured)[0]}/>;
   };
   return (
     <div>
@@ -20,6 +27,7 @@ function Main() {
       <Switch>
         <Route path="/home" component={HomePage} />
         <Route exact path="/menu" component={() => <Menu dishes={DISHES} />} />
+        <Route exact path='/contactus' component={Contact} />
         <Redirect to="/home" />
       </Switch>
       <Footer />
