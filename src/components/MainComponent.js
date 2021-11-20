@@ -1,7 +1,7 @@
 import React from "react";
 //import "./App.css";
 import Menu from "./MenuComponent";
-import Dishdetail from "./DishdetailComponent";
+import DishDetail from "./DishdetailComponent";
 import { DISHES } from "../shared/dishes";
 import Home from "./HomeComponent";
 import { useRouteMatch, Switch, Route, Redirect } from "react-router-dom";
@@ -21,12 +21,20 @@ function Main(props) {
     promotion={PROMOTIONS.filter((promo) => promo.featured)[0]}
     leader={LEADERS.filter((leader) => leader.featured)[0]}/>;
   };
+
+  const DishWithId = ({match}) => {
+    return(
+        <DishDetail dish={DISHES.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+          comments={COMMENTS.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+    );
+  };
   return (
     <div>
       <Header />
       <Switch>
         <Route path="/home" component={HomePage} />
         <Route exact path="/menu" component={() => <Menu dishes={DISHES} />} />
+        <Route path='/menu/:dishId' component={DishWithId} />
         <Route exact path='/contactus' component={Contact} />
         <Redirect to="/home" />
       </Switch>
