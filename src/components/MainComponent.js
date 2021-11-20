@@ -8,9 +8,11 @@ import { useRouteMatch, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Contact from './ContactComponent';
+import About from "./AboutComponent";
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+
 
 function Main(props) {
  
@@ -36,6 +38,8 @@ function Main(props) {
         <Route exact path="/menu" component={() => <Menu dishes={DISHES} />} />
         <Route path='/menu/:dishId' component={DishWithId} />
         <Route exact path='/contactus' component={Contact} />
+        <Route exact path="/aboutus" component={() => <About leaders={LEADERS} />} />
+        
         <Redirect to="/home" />
       </Switch>
       <Footer />
