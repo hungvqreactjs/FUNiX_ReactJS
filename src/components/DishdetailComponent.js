@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Card,
   CardImg,
@@ -7,8 +7,64 @@ import {
   CardTitle,
   Breadcrumb,
   BreadcrumbItem,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Label,
+  Row,
+  Col,
+
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Control, LocalForm } from "react-redux-form";
+
+const CommentForm = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+
+  const handleSubmit = (values) => {
+    toggle();
+    
+    console.log("CommentForm : " + JSON.stringify(values));
+    alert("CommentForm: " + JSON.stringify(values));
+}
+  return(
+    <div>
+        <Button outline onClick={toggle}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
+        <Modal isOpen={isOpen} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Submit Comment</ModalHeader>
+        <ModalBody>
+            <LocalForm onSubmit={(values) => handleSubmit(values)}>
+                <Row className="form-group">
+                    <Col>
+                    <Label htmlFor="rating">Rating</Label>
+                    <Control.select model=".rating" id="rating" className="form-control">
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Star</option>
+                        <option value="3">3 Star</option>
+                        <option value="4">4 Star</option>
+                        <option value="5">5 Star</option>
+                    </Control.select>
+                    </Col>
+                </Row>
+                <Row className="form-group">
+                    <Col>
+                    <Label htmlFor="comment">Comment</Label>
+                    <Control.textarea model=".comment" id="comment"
+                                rows="6" className="form-control" />
+                    </Col>
+                </Row>
+                <Button type="submit" className="bg-primary">
+                    Submit
+                </Button>
+            </LocalForm>
+        </ModalBody>
+       </Modal>
+    </div>
+    );
+
+}
 
 const DishDetail = ({ dish, comments }) => {
 
@@ -26,7 +82,7 @@ const DishDetail = ({ dish, comments }) => {
       </div>
     );
   };
-  const RenderComments = (comments) => {
+  const RenderComments = (comments, postComment) => {
 
     if (comments != null)
       return (
@@ -42,6 +98,7 @@ const DishDetail = ({ dish, comments }) => {
               );
             })}
           </ul>
+          <CommentForm postComment={postComment}/>
         </div>
       );
     else return <div></div>;
