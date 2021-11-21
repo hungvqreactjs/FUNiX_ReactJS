@@ -4,7 +4,7 @@ import Menu from "./MenuComponent";
 import DishDetail from "./DishdetailComponent";
 import { DISHES } from "../shared/dishes";
 import Home from "./HomeComponent";
-import { useRouteMatch, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Contact from './ContactComponent';
@@ -16,8 +16,6 @@ import { LEADERS } from '../shared/leaders';
 
 function Main(props) {
  
-  console.log("ok",props)
-
   const HomePage = () => {
     return <Home   dish={DISHES.filter((dish) => dish.featured)[0]}
     promotion={PROMOTIONS.filter((promo) => promo.featured)[0]}
