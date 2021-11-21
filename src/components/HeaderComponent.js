@@ -24,13 +24,6 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
-  //   const handleLogin = (event) => {
-  //     toggle()
-  //     alert("Username: " + username.value + " Password: " + password.value
-  //     + " Remember: " + remember.checked);
-  // event.preventDefault();
-  //   }
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
