@@ -137,7 +137,7 @@ function Contact(props) {
             >
               <i className="fa fa-phone"></i> Call
             </a>
-            <a role="button" className="btn btn-info">
+            <a role="button" href="live:.cid.e2b183ac10c1bf69" className="btn btn-info">
               <i className="fa fa-skype"></i> Skype
             </a>
             <a
