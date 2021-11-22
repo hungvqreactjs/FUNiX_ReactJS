@@ -11,8 +11,11 @@ import {
   CardText,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { baseUrl } from '../shared/baseUrl';
 
 function About(props) {
+console.log("about", props)
+
   const RenderLeader = (leaders) => {
   
     return (
@@ -21,7 +24,7 @@ function About(props) {
           <div className="col-lg-3 col-sm-4 col-12">
             <CardImg
               top
-              src={leaders.leaders.image}
+              src={baseUrl + leaders.leaders.image}
               alt={leaders.leaders.name}
             />
           </div>
@@ -37,7 +40,7 @@ function About(props) {
     );
   };
 
-  const leaders = props.leaders.map((leaders) => {
+  const leaders = props.leaders.leaders.map((leaders) => {
     return <RenderLeader leaders={leaders} />;
   });
 

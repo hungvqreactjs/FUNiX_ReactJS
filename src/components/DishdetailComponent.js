@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { Control, LocalForm } from "react-redux-form";
 import { addComment } from "../redux/ActionCreators";
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const CommentForm = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +81,7 @@ const RenderDish = (dish ) => {
   return (
     <div className=" col-12 col-md-5 m-1">
     <Card key={dish.dish.id}>
-      <CardImg top src={dish.dish.image} alt={dish.dish.name} />
+      <CardImg top src={baseUrl + dish.dish.image} alt={dish.dish.name} />
       <CardBody>
         <CardTitle>{dish.dish.name}</CardTitle>
         <CardText>{dish.dish.description}</CardText>
