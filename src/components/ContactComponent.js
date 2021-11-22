@@ -8,7 +8,7 @@ import {
   Label,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, LocalForm, Errors } from "react-redux-form";
+import { Control, Form, Errors, actions } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -92,7 +92,7 @@ function Contact(props) {
           <h3>Send us your Feedback</h3>
         </div>
         <div className="col-12 col-md-9">
-          <LocalForm onSubmit={(values) => handleSubmit(values)}>
+          <Form model="feedback" onSubmit={(values) => handleSubmit(values)}>
             <Row className="form-group">
               <Label htmlFor="firstname" md={2}>
                 First Name
@@ -254,7 +254,7 @@ function Contact(props) {
                 </Button>
               </Col>
             </Row>
-          </LocalForm>
+          </Form>
         </div>
       </div>
     </div>

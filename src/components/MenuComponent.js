@@ -6,7 +6,6 @@ import { Loading } from './LoadingComponent';
 
 const Menu = ({dishes}) => {
 
- console.log("dishes",dishes)
   const menu = dishes.dishes.map((dish) => {
     return (
       <div className="col-12 col-md-5 m-1">
