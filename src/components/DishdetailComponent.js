@@ -19,6 +19,7 @@ import {
 import { Link } from "react-router-dom";
 import { Control, LocalForm } from "react-redux-form";
 import { addComment } from "../redux/ActionCreators";
+import { Loading } from './LoadingComponent';
 
 const CommentForm = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,11 +111,29 @@ const RenderComments = (comments, addComment, dishId) => {
   else return <div></div>;
 };
 
-const DishDetail = ({dish, comments,addComment }) => {
+const DishDetail = ({dish, comments,addComment, isLoading,errMess  }) => {
 
   console.log("dish", dish, "comments",comments,"addComment",addComment)
   
-
+  if (isLoading) {
+    return(
+        <div className="container">
+            <div className="row">            
+                <Loading />
+            </div>
+        </div>
+    );
+}
+else if (errMess) {
+    return(
+        <div className="container">
+            <div className="row">            
+                <h4>{errMess}</h4>
+            </div>
+        </div>
+    );
+}
+else if (dish != null){
   return (
     <div>
            <div className="container">
@@ -138,6 +157,9 @@ const DishDetail = ({dish, comments,addComment }) => {
       </div>
     </div>
   );
+}else {
+  return <div></div>
+}
 };
 
 export default DishDetail;

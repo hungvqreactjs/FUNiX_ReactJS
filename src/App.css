@@ -31,3 +31,19 @@ address{
 .navbar-dark {
     background-color: #512DA8;
 }
+
+.navbar-collapse{
+    justify-content: inherit !important;
+}
+
+.form-group{
+  margin-bottom: 10px;
+}
+
+.breadcrumb{
+    margin-top: 15px;
+}
+.breadcrumb-item{
+    font-size: 25px;
+    font-weight: bold;
+}

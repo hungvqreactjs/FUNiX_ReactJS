@@ -69,7 +69,7 @@ const Header = () => {
               </NavItem>
             </Nav>
 
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto login" navbar>
               <NavItem>
                 <Button outline onClick={toggle}>
                   <span className="fa fa-sign-in fa-lg"></span> Login
