@@ -18,16 +18,18 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm } from "react-redux-form";
+import { addComment } from "../redux/ActionCreators";
 
-const CommentForm = () => {
+const CommentForm = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   const handleSubmit = (values) => {
     toggle();
     
-    console.log("CommentForm : " + JSON.stringify(values));
-    alert("CommentForm: " + JSON.stringify(values));
+     console.log("CommentForm : " + JSON.stringify(values));
+     alert("CommentForm: " + JSON.stringify(values));
+     addComment(values.rating, values.author, values.comment)
 }
   return(
     <div>
@@ -50,6 +52,13 @@ const CommentForm = () => {
                 </Row>
                 <Row className="form-group">
                     <Col>
+                    <Label htmlFor="author">Your name</Label>
+                    <Control.text model=".author" id="author"
+                                rows="6" className="form-control" />
+                    </Col>
+                </Row>
+                <Row className="form-group">
+                    <Col>
                     <Label htmlFor="comment">Comment</Label>
                     <Control.textarea model=".comment" id="comment"
                                 rows="6" className="form-control" />
@@ -65,44 +74,46 @@ const CommentForm = () => {
     );
 
 }
+const RenderDish = (dish ) => {
 
-const DishDetail = ({ dish, comments }) => {
+  return (
+    <div className=" col-12 col-md-5 m-1">
+    <Card key={dish.dish.id}>
+      <CardImg top src={dish.dish.image} alt={dish.dish.name} />
+      <CardBody>
+        <CardTitle>{dish.dish.name}</CardTitle>
+        <CardText>{dish.dish.description}</CardText>
+      </CardBody>
+    </Card>
+    </div>
+  );
+};
+const RenderComments = (comments, addComment, dishId) => {
 
-  const RenderDish = (dish) => {
-
+  if (comments != null)
     return (
       <div className=" col-12 col-md-5 m-1">
-      <Card key={dish.dish.id}>
-        <CardImg top src={dish.dish.image} alt={dish.dish.name} />
-        <CardBody>
-          <CardTitle>{dish.dish.name}</CardTitle>
-          <CardText>{dish.dish.description}</CardText>
-        </CardBody>
-      </Card>
+        <h4>Comments</h4>
+        <ul className="list-unstyled">
+          {comments.comments.map((comment) => {
+            return (
+              <li key={comment.id}>
+                <p>{comment.comment}</p>
+                <h5>--{comment.author}</h5>
+              </li>
+            );
+          })}
+        </ul>
+        <CommentForm addComment={addComment} dishId={dishId}/>
       </div>
     );
-  };
-  const RenderComments = (comments, postComment) => {
+  else return <div></div>;
+};
 
-    if (comments != null)
-      return (
-        <div className=" col-12 col-md-5 m-1">
-          <h4>Comments</h4>
-          <ul className="list-unstyled">
-            {comments.comments.map((comment) => {
-              return (
-                <li key={comment.id}>
-                  <p>{comment.comment}</p>
-                  <p>{comment.author}</p>
-                </li>
-              );
-            })}
-          </ul>
-          <CommentForm postComment={postComment}/>
-        </div>
-      );
-    else return <div></div>;
-  };
+const DishDetail = ({dish, comments,addComment }) => {
+
+  console.log("dish", dish, "comments",comments,"addComment",addComment)
+  
 
   return (
     <div>
@@ -120,7 +131,9 @@ const DishDetail = ({ dish, comments }) => {
                 </div>
             <div className="row">
       <RenderDish dish={dish} />
-      <RenderComments comments={comments} />
+      <RenderComments comments={comments}
+             addComment={addComment}
+             dishId={dish.id} />
       </div>
       </div>
     </div>
